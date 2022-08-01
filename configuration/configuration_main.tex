@@ -1,0 +1,65 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Based on:
+% The Legrand Orange Book
+% LaTeX Template
+% Version 2.4 (26/09/2018)
+%
+% This template was downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% Mathias Legrand (legrand.mathias@gmail.com) with modifications by:
+% Vel (vel@latextemplates.com)
+% Oliver Probst (oprobst@icloud.com)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+% Important note:
+% Chapter heading images should have a 2:1 width:height ratio,
+% e.g. 920px width and 460px height.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\input{configuration/lernziele_definitions.tex}
+
+\makeindex % Tells LaTeX to create the files required for indexing
+
+% Tikz Lib imports
+\usetikzlibrary{decorations.pathreplacing, backgrounds, calc, arrows.meta, angles, quotes, positioning, tikzmark, trees, matrix, decorations.text, shadings, shapes.arrows, shapes.symbols, shadows, graphs, graphs.standard}
+
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+            \node[shape=circle, draw, inner sep=2pt] (char) {#1};}}
+
+\setlength{\parindent}{0pt}
+
+% TODO: remove
+\newcommand{\turtleexercise}[1]{#1\hspace{0.1cm}\reflectbox{\scriptsize\smallpencil}}
+
+\input{configuration/to_do_list_definition.tex}
+\input{configuration/circuit_definitions.tex}
+\input{configuration/color_definitions.tex}
+\input{configuration/listing_definitions.tex}
+\input{configuration/quote_definitions.tex}
+\input{configuration/layout.tex}
+\input{configuration/cryptology.tex}
+\input{configuration/file_directory_visualizer.tex}
+\input{configuration/main_toc.tex}
+\input{configuration/mini_toc_part_heads.tex}
+\input{configuration/headers_footers.tex}
+\input{configuration/theorem_styles.tex}
+\input{configuration/definition_colored_boxes.tex}
+\input{configuration/remark_environment.tex}
+\input{configuration/section_numbering_margin.tex}
+
+% Reset Chapter numbering in each part.
+%\@addtoreset{chapter}{part}
+
+\input{configuration/part_headings.tex}
+\input{configuration/chapter_headings.tex}
+\input{configuration/network_topology.tex}
+\input{configuration/links.tex}
+\input{configuration/exercise_questions.tex}
+
+

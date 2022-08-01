@@ -1,0 +1,119 @@
+\toggletrue{image}
+\togglefalse{imagehover}
+\chapterimage{purity}
+\chapterimagetitle{PURITY}
+\chapterimageurl{https://xkcd.com/435/}
+
+\chapter{Dies ist ein Kapitel}
+\label{chapter-kapitelname}
+
+\section{Abschnitt}
+\label{sec-abschnitt}
+Lernziele
+
+\newcommand{\NameFuerDieLernziele}{
+\protect\begin{todolist}
+\item Lernziel 1
+\item Lernziel 2
+\item Lernziel 3
+\end{todolist}
+}
+
+\lernziel{\autoref{sec-abschnitt}, \nameref{sec-abschnitt}}{\protect\NameFuerDieLernziele}
+
+\NameFuerDieLernziele
+
+\lipsum[75]
+
+\begin{definition}[Eine Definition]
+\lipsum[75] \cite{def-informatik}
+\end{definition}
+
+\section{Abschnitt}
+
+\lipsum[75]
+
+\begin{itemize}
+\item Foo
+\item Bar
+\end{itemize}
+
+\subsection{Unterabschnitt}
+
+\lipsum[75]
+
+\subsubsection{Unterunterabschnitt}
+
+\begin{example}[Titel]
+
+Foo Bar \ac{IDE} \graybgtexttt{01\_mein\_erstes\_programm}. Referenz: \autoref{lst-quadrat}
+
+\begin{figure}[htb]
+\centering
+\begin{minipage}{0.55\linewidth}
+\centering
+% Default language ist Python.
+\begin{lstlisting}[caption={Befehle für ein Quadrat (\graybgtexttt{quadrat.py}).}, label=lst-quadrat, showspaces=true]
+import turtle
+
+turtle.forward(100)
+turtle.left(90)
+turtle.forward(100)
+turtle.left(90)
+turtle.forward(100)
+turtle.left(90)
+turtle.forward(100)
+turtle.left(90)
+turtle.done()
+\end{lstlisting}
+\end{minipage}
+\hfill
+\begin{minipage}[c]{0.35\linewidth}
+\centering
+\begin{forest}
+  pic dir tree,
+  pic root,
+  for tree={% folder icons by default; override using file for file icons
+    directory,
+  },
+  [
+  	imp\_prog
+  	[
+		01\_mein\_erstes\_programm
+		[
+			quadrat.py, pythonfile
+		]	
+    ]	
+]
+\end{forest}
+\caption{Datei- und Ordnerstruktur in der \ac{IDE}.}
+\label{figure-dir-structure-01}
+\end{minipage}
+\end{figure}
+
+Die Datei- und Ordnerstruktur sollte nun wie in \autoref{figure-dir-structure-01} aussehen. Führen Sie abschliessend das Programm aus. Wenn Sie das Programm ausführen, dann wird das Fenster aus \autoref{figure-quadrat} geöffnet und das Quadrat durch die \say{Turtle} (das kleine Dreieck) gezeichnet.
+
+\begin{hinweis}
+Das Zeichen \texttt{\char32} soll verdeutlichen, dass hier ein Leerzeichen\footnote{Leerschlag} eingegeben werden \textbf{muss}. Alle anderen Leerzeichen, welche nicht explizit abgedruckt sind, sollten aber müssen nicht notiert werden.
+\end{hinweis}
+
+\begin{figure}[htb]
+\centering
+\includegraphics[scale=0.15]{quadrat.png}
+\caption{Resultat der Ausführung}
+\label{figure-quadrat}
+\end{figure}
+
+\end{example}
+
+\begin{vocabulary}[Listing (dt.: Programmausdruck)]
+Bezeichnung für den vollständigen Ausdruck des Source Codes eines Programms auf Papier. Listings dienen der Dokumentation eines Programms, der Fehlersuche (größerer Überblick über das Programm als auf dem Bildschirm oder bei der Anzeige in einem Debugger) oder zu Lehrzwecken.
+\end{vocabulary}
+
+\vspace{0.25cm}
+
+\begin{vocabulary}[Source Code (dt.: Quellcode)]
+Bezeichnung für den Programmtext der ein Programmierer bzw. eine Programmiererin eingegeben hat. Wird oft einfach mit Code abgekürzt.
+\end{vocabulary}
+
+\paragraph{Zusammenfassung} Typischerweise verwenden wir für das Erstellen eines Textes (z. B. einen Lebenslauf) ein Textverarbeitungsprogramm (z. B. Microsoft Word). Auch für das Programmieren ist es von Vorteil, wenn man ein spezielles Programm verwendet. Solch ein Programm wird \textbf{\ac{IDE}} genannt. PyCharm ist zum Beispiel eine IDE und unterstützt uns beim Programmieren mit Python. Eine Software zu erstellen wird häufig auch als Software-Entwicklung (engl. software development) bezeichnet. In einer \textbf{Datei} (engl. file) kann ein Computeranwender Informationen langfristig auf einem Speichermedium (Festplatte, USB-Stick, Cloud etc.) speichern. Die gespeicherten Informationen können sehr vielseitig sein: Texte, Bilder, Audio, \dots oder auch ein Python-Programm. Eine Datei, in der ein Python-Programm gespeichert ist, nennen wir \textbf{Python-Datei}. Eine Datei wird häufig unter Verwendung eines Punktes (\texttt{.}) in zwei Teile gegliedert, den eigentlichen Namen und die sogenannte \textbf{Dateinamen-Erweiterung} (engl. file extension). Für Word-Dateien gibt es zum Beispiel die Dateinamen-Erweiterung \texttt{.docx}. Python-Dateien haben die Dateinamen-Erweiterung \texttt{py}. In einem \textbf{Ordner} (engl. directory oder folder) können mehrere Dateien zusammengefasst werden. Ein Ordner kann wiederum auch einen weiteren Ordner besitzen.

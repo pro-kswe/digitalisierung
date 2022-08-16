@@ -31,9 +31,9 @@ Dieser Prozess geschieht im Alltag ständig. Sie öffnen die Kamera-App und schi
 \begin{figure}[htb]
 \centering
 \begin{tikzpicture}
-\node[inner sep=0pt] (portland) at (-5,0) {\includegraphics[height=3cm]{portland}};
+\node[inner sep=0pt] (portland) at (-5,0) {\includegraphics[height=1.75cm]{portland}};
 \node[inner sep=0pt] (applekameraicon) at (0,0) {\includegraphics[scale=0.1]{apple-kamera-icon}};
-\node[inner sep=0pt] (smartphonefestplatte) at (5,0) {\includegraphics[height=3cm]{smartphone_festplatte}};
+\node[inner sep=0pt] (smartphonefestplatte) at (5,0) {\includegraphics[height=1.75cm]{smartphone_festplatte}};
 \draw[-latex, thick] (portland) -- (applekameraicon) node[midway, fill=white] {\say{Klick}};
 \draw[-latex, thick] (applekameraicon) -- (smartphonefestplatte) node[midway, fill=white] {\includegraphics[scale=0.15]{image_file_icon}};
 \end{tikzpicture}
@@ -49,8 +49,12 @@ Das Bild stellt hier die Information dar, welche in einer Bilddatei gespeichert 
 In einer Datei (engl. file) kann ein Computer Daten langfristig auf einem Speichermedium (Festplatte, USB-Stick, Smartphone-Speicher etc.) unter einem Namen speichern. Die gespeicherten Informationen in der Datei können sehr vielseitig sein: Texte, Bilder, Audio, Video, \dots . Dateien bleiben nach einem Neustart des Computers erhalten und werden nicht gelöscht.
 \end{definition}
 
+\begin{definition}[Bilddatei]
+Eine Datei, in der ein Bild gespeichert ist, nennen wir Bilddatei.
+\end{definition}
+
 \begin{definition}[Dateinamen-Erweiterung]
-Eine Datei wird unter Verwendung eines Punktes (\texttt{.}) in zwei Teile gegliedert, den eigentlichen Namen und die sogenannte Dateinamen-Erweiterung (engl. file extension).
+Ein Dateiname wird unter Verwendung eines Punktes (\texttt{.}) in zwei Teile gegliedert, den eigentlichen Namen und die sogenannte Dateinamen-Erweiterung (engl. file extension).
 \end{definition}
 
 \begin{example}
@@ -63,10 +67,6 @@ Es gibt zahlreiche Dateinamen-Erweiterungen. Hier ein paar bekannte Beispiele:
 \end{itemize}
 Ein vollständiger Dateiname wäre zum Beispiel \texttt{portland.jpg}.
 \end{example}
-
-\begin{definition}[Bilddatei]
-Eine Datei, in der ein Bild gespeichert ist, nennen wir Bilddatei.
-\end{definition}
 
 Wir klären in diesem Skript, wie der Computer in einer Datei ein Bild oder Text speichert.
 

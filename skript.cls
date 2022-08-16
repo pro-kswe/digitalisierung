@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{schoolbook}[2022-07-10 Schoolbook]
+\ProvidesClass{skript}[2022-08-08 Skript]
 
 \LoadClass[11pt, fleqn, leqno, openany, a4paper, listof=numbered]{book}
 

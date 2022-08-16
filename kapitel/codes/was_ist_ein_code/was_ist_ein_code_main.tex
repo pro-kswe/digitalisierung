@@ -41,26 +41,26 @@ In unserem Alltag treffen wir häufig auf Codes\footnote{Auch die Schreibweise K
 \centering
 \begin{minipage}{0.3\textwidth}
 \centering
-\includegraphics[scale=0.25]{ampel}
-%https://www.publicdomainpictures.net/pictures/260000/velka/traffic-light-1526166819zss.jpg
-\caption{Ampel.}
-\label{figure-ampel}
+\includegraphics[scale=0.15]{qr_code}
+%https://de.wikipedia.org/wiki/QR-Code#/media/Datei:QR_deWP.svg
+\caption{Der Text \url{https://de.wikipedia.org} als \protect\acs{QR}-Code.}
+\label{figure-qr-code}
 \end{minipage}
 \hfill
 \begin{minipage}{0.3\textwidth}
 \centering
-\includegraphics[scale=0.07]{eu_washing_machines_label}
+\includegraphics[scale=0.1]{ean13}
 %https://de.wikipedia.org/wiki/Energieverbrauchskennzeichnung#/media/Datei:EU_washing_machines_label.jpg
-\caption{Energieverbrauchskennzeichnung.}
-\label{figure-energie}
+\caption{\acs{EAN}-13 Strichcode.}
+\label{figure-ean}
 \end{minipage}
 \hfill
 \begin{minipage}{0.3\textwidth}
 \centering
-\includegraphics[scale=0.1]{start_stop_play}
-%https://pixabay.com/de/vectors/tasten-anschlag-spielen-anhalten-35531/
-\caption{Zeichen bei Abspielgeräten.}
-\label{figure-abspielgeraet}
+\includegraphics[scale=0.4]{morse}
+%https://mia.phsz.ch/pub/Sekundarstufe/Codierung/2017-05-02-codes.pdf
+\caption{Morsecode: Buchstaben werden zu Tönen}
+\label{figure-morsealphabet}
 \end{minipage}
 \end{figure}
 
@@ -114,7 +114,7 @@ I & $\cdot~\cdot$ & R & $\cdot~-~\cdot$ & @ & $\cdot~-~-~\cdot-~\cdot$ \\ \hline
 Möchte man einen Code anwenden, so werden folgende Begriffe häufig eingesetzt.
 
 \begin{definition}[Codieren und Decodieren]
-Ein Code besteht aus Eingabedaten und Ausgabedaten. Das Umwandeln von Eingabedaten in Ausgabedaten nennt man Codieren. Beim Codieren entstehen Code-Wörter. Wandelt man ein Code-Wort zurück, dann spricht man von Decodieren. 
+Ein Code besteht aus Eingabedaten und Ausgabedaten. Das Umwandeln von Eingabedaten in Ausgabedaten nennt man Codieren (eng. encode). Beim Codieren entstehen Code-Wörter. Wandelt man ein Code-Wort zurück, dann spricht man von Decodieren (decode). 
 \end{definition}
 
 \begin{example}
@@ -146,3 +146,26 @@ Falls ein Code nur Code-Wörter mit den Zeichen $0$ und $1$ verwendet, dann hand
 \end{definition}
 
 Wir fokussieren uns deshalb von nun an auf Binärcodes.
+
+\begin{example}
+Der Unicode ist ein Binärcode. Wir codieren den Text \say{Dies ist ein Binärcode.} mit dem Unicode in die folgenden Bits:
+
+\begin{lstlisting}[language=output, caption={Leerzeichen und neue Zeilen dienen nur der Übersicht.}]
+01000100 01101001 01100101 01110011 00100000 01101001
+01110011 01110100 00100000 01100101 01101001 01101110
+00100000 01000010 01101001 01101110 11000011 10100100
+01110010 01100011 01101111 01100100 01100101 00101110
+\end{lstlisting}
+
+\end{example}
+
+\section{Aufgaben}
+
+\begin{enumerate}
+\item Decodieren Sie $\cdot~\cdot~/-~\cdot~/~\cdot~\cdot~-~\cdot~/~-~-~-~/~\cdot~-~\cdot~/~-~-~/~\cdot~-~/~-~/~\cdot~\cdot~/~-~\cdot~-$.
+\fillwithgrid{0.5in}
+\item Codieren Sie Ihren Vornamen mit dem Morsecode. Verwenden Sie nur Grossbuchstaben.
+\fillwithgrid{0.5in}
+\item Zeigen Sie, dass $-~\cdot~-~\cdot~\cdot~\cdot~-~-~\cdot$ nicht eindeutig decodiert werden kann.
+\fillwithgrid{0.75in}
+\end{enumerate}

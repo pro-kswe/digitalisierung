@@ -9,3 +9,49 @@
 \label{chapter-bcd-codes}
 
 Im Vergleich zum Dualcode (siehe \autoref{chapter-dualcode}) verfolgen \ac{BCD}-Codes den Ansatz isoliert jede Dezimalziffer zu codieren. Eine Dezimalziffer kann man auf unterschiedliche Weise codieren. Wir schauen uns hier zwei Verfahren an.
+
+\section{8-4-2-1-BCD-Code}
+
+Bei diesem Code wird jeder Dezimalziffer eine $4$-Bit-Zahl zugeordnet. Die Codierung der Dezimalziffer erfolgt mittels Dualcode (siehe \autoref{chapter-dualcode}). Wir übersetzen jede Ziffer gemäss Dualcode. Besitzt die Dualzahl keine $4$ Bits, dann \say{füllen} wir mit Nullen auf. Wir erhalten somit für den Code \autoref{table-8421bcd}.
+
+\begin{table}[htb]
+\centering
+\begin{tabular}{|c|c|c|c|c|c|c|c|}
+\hline
+Ziffer & Code-Wort & Ziffer & Code-Wort & Ziffer & Code-Wort & Ziffer & Code-Wort \\ \hline
+0       &   0000        & 5       &   0101        &         &  1010   &         &  1111      \\ \hline
+1       &   0001        & 6       &   0110        &         &  1011   & &     \\ \hline
+2       &   0010        & 7       &   0111        &         &  1100    & &     \\ \hline
+3       &   0011        & 8       &   1000        &         &  1101    & &    \\ \hline
+4       &   0100        & 9       &   1001        &         &  1110    & &     \\ \hline
+\end{tabular}
+\caption{Code-Tabelle für den 8-4-2-1-\ac{BCD}-Code.}
+\label{table-8421bcd}
+\end{table}
+
+Da es zehn Dezimalziffern gibt, benötigen wir Code-Wörter der Länge vier. Das heisst, jedes Code-Wort besteht aus vier Bits. Da alle Code-Wörter gleich lang sind, handelt es sich um einen Blockcode.
+
+\begin{hinweis}
+Möchte man zehn Zeichen eindeutig mit Binärziffern codieren, dann benötigt man pro Code-Wort mindestens $log_2(10) \approx \qty{3,32}{\bit}$. Da es nur \say{ganze} Bits gibt, müssen wir $3,32$ aufrunden und erhalten 4 Bits pro Code-Wort.
+\end{hinweis}
+
+Beim 8-4-2-1-BCD-Code gibt es mehr $4$-Bit-Zahl als eigentlich notwendig. Einige Code-Wörter (z.B. $1101$) werden nicht \say{gebraucht}. Diese Code-Wörter codieren kein gültiges Zeichen und dürfen \textbf{nicht} verwendet werden. Eine natürliche Zahl wird dann Dezimalziffer für Dezimalziffer codiert. 
+
+\begin{example}
+Die Zahl $42$ wird zu $01000010$ codiert.
+\end{example}
+
+Der 8-4-2-1-\ac{BCD}-Code findet in der Praxis nur noch selten eine Anwendung. Bei einer \ac{SMS}-Nachricht wird die Telefonnummer mittels 8-4-2-1-\ac{BCD}-Code codiert. Bei Binäruhren verwenden die Stunden, Minuten und Sekunden den 8-4-2-1-\ac{BCD}-Code.
+
+\subsection{Warum der Name 8-4-2-1?}
+
+Der 8-4-2-1-\ac{BCD} benutzt gerade die ersten vier Stellen einer dualcodierten Zahl. Die ersten vier Stellen einer Dualzahl besitzen die Werte $8$, $4$, $2$ und $1$ (von links nach rechts gelesen).
+
+\section{Aufgaben}
+
+\fillwithgrid{0.5in}
+
+\begin{enumerate}
+\item Codieren Sie die Zahl $65536$ mit dem 8-4-2-1-\ac{BCD}-Code. Wie viele Bits werden benötigt? Wie viele Bits benötigt man für die Zahl, wenn man den Dualcode verwenden würde?
+\item Decodieren Sie das Wort $0010000000000001$ unter der Verwendung des \ac{BCD}-Codes.
+\end{enumerate}

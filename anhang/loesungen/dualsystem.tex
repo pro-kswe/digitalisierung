@@ -1,0 +1,125 @@
+\section{\autoref{chapter-dualsystem}, \nameref{chapter-dualsystem}}
+
+\subsection*{Aufgaben 1}
+
+\begin{enumerate}
+\item Für grosse Zahlen ist die unäre Zahlendarstellung sehr aufwendig. Man muss zum Beispiel für $65\,536$ genau diese Anzahl an Striche notieren. Dies ist nicht effizient, die Darstellung ist nicht kompakt. 
+\item Die Dezimaldarstellung erlaubt es die Zahlen kompakt darzustellen, da wir mehr Ziffern verwenden. Man kann Zahlen kompakter darstellen, wenn man mehr Ziffern verwendet. In Zahlensystemen mit mehr als $10$ Ziffern, wird die Darstellung noch kompakter.
+\end{enumerate}
+
+
+\subsection*{Aufgaben 2}
+
+\begin{enumerate}
+\item $67_{10} = 1000011_2$
+\begin{alignat*}{6}
+67 & : & ~2 & ~=~ & 33 & ~R~ & 1 \\
+33 & : & ~2 & ~=~ & 16 & ~R~ & 0 \\
+16 & : & ~2 & ~=~ & 8 & ~R~ & 0 \\
+8 & : & ~2 & ~=~ & 4 & ~R~ & 0 \\
+4 & : & ~2 & ~=~ & 2 & ~R~ & 0 \\
+2 & : & ~2 & ~=~ & 1 & ~R~ & 0 \\
+1 & : & ~2 & ~=~ & 0 & ~R~ & 1 \\
+\end{alignat*}
+
+\item $1000_{10} = 1111101000_2$
+\begin{alignat*}{6}
+1000 & : & ~2 & ~=~ & 500 & ~R~ & 0 \\
+500 & : & ~2 & ~=~ & 250 & ~R~ & 0 \\
+250 & : & ~2 & ~=~ & 125 & ~R~ & 0 \\
+125 & : & ~2 & ~=~ & 62 & ~R~ & 1 \\
+62 & : & ~2 & ~=~ & 31 & ~R~ & 0 \\
+31 & : & ~2 & ~=~ & 15 & ~R~ & 1 \\
+15 & : & ~2 & ~=~ & 7 & ~R~ & 1 \\
+7 & : & ~2 & ~=~ & 3 & ~R~ & 1 \\
+3 & : & ~2 & ~=~ & 1 & ~R~ & 1 \\
+1 & : & ~2 & ~=~ & 0 & ~R~ & 1 \\
+\end{alignat*}
+
+\item $333_{10} = 101001101_2$
+\begin{alignat*}{6}
+333 & : & ~2 & ~=~ & 166 & ~R~ & 1 \\
+166 & : & ~2 & ~=~ & 83 & ~R~ & 0 \\
+83 & : & ~2 & ~=~ & 41 & ~R~ & 1 \\
+41 & : & ~2 & ~=~ & 20 & ~R~ & 1 \\
+20 & : & ~2 & ~=~ & 10 & ~R~ & 0 \\
+10 & : & ~2 & ~=~ & 5 & ~R~ & 0 \\
+5 & : & ~2 & ~=~ & 2 & ~R~ & 1 \\
+2 & : & ~2 & ~=~ & 1 & ~R~ & 0 \\
+1 & : & ~2 & ~=~ & 0 & ~R~ & 1 \\
+\end{alignat*}
+
+\end{enumerate}
+
+\subsection*{Aufgaben 2}
+
+\begin{enumerate}
+\item  $1111_2 = 15_{10}$
+
+\begin{alignat*}{6}
+1111_2 &= 1 \cdot 2^0 + 1 \cdot 2^1 + 1 \cdot 2^2 + 1 \cdot 2^3 \\
+& = 1 \cdot 1 + 1 \cdot 2 + 1 \cdot 4 + 1 \cdot 8 \\
+& = 1 + 2 + 4 + 8 = 15_{10}
+\end{alignat*}
+
+\item $100000_2 = 32_{10}$
+
+\begin{alignat*}{6}
+100000_2 &= 0 \cdot 2^0 + 0 \cdot 2^1 + 0 \cdot 2^2 + 0 \cdot 2^3 + 0 \cdot 2^4 + 1 \cdot 2^5 \\
+& = 0 + 0 + 0 + 0 + 0 + 1 \cdot 32 \\
+& = 32_{10}
+\end{alignat*}
+
+\item $101101_2 = 45_{10}$
+
+\begin{alignat*}{6}
+101101_2 &= 1 \cdot 2^0 + 0 \cdot 2^1 + 1 \cdot 2^2 + 1 \cdot 2^3 + 0 \cdot 2^4 + 1 \cdot 2^5 \\
+& = 1 \cdot 1 + 0 + 1 \cdot 4 + 1 \cdot 8 + 0 + 1 \cdot 32 \\
+& = 45_{10}
+\end{alignat*}
+
+\end{enumerate}
+
+\section*{Aufgaben 3}
+
+\begin{enumerate}
+
+\item Das Bit an der $0$-ten Stelle (ganz \say{rechts}) gibt an, ob eine Zahl gerade oder ungerade ist. Ist das Bit $0$, dann ist die Zahl gerade. Ist das  Bit $1$, dann ist die Zahl ungerade.
+
+\item Eine Dualzahl mit $x$-Stellen entspricht folgender Zahl im Dezimalsystem: $b_0 \cdot 2^0 + b_1 \cdot 2^1 + b_2 \cdot 2^2 + \cdots + b_{x-2} \cdot 2^{x-2} + b_{x-1} \cdot 2^{x-1}$. Mit $b_i$ ist das Bit an der $i$-ten Stelle gemeint. Beispiel: $b_0$ ist das Bit an der $0$-ten Stelle. Wenn wir zum Beispiel die Dualzahl $1010_2$ betrachten, dann erhalten wir folgende Rechnung: $0 \cdot 2^0 + 1 \cdot 2^1 + 0 \cdot 2^2 + 1 \cdot 2^3$. In diesem Beispiel ist $x = 4$, da die Dualzahl vier Bits besitzt.
+
+Wir betrachten eine Dualzahl mit einer $1$ und $n$ Nullen ($1$~$\overbrace{000\dots0}^{n-\textrm{Nullen}}$~$_2$). Die Dualzahl hat somit $x = n + 1$ \textbf{Stellen} (eine Eins und $n$ Nullen). Mit der Rechnung von oben erhalten wir:
+
+\begin{equation*}
+b_0 \cdot 2^0 + b_1 \cdot 2^1 + b_2 \cdot 2^2 + \cdots + b_{x-2} \cdot 2^{x-2} + b_{x-1} \cdot 2^{x-1}
+\end{equation*}
+
+Mit $x = n + 1$ ergibt dies:
+
+\begin{equation*}
+b_0 \cdot 2^0 + b_1 \cdot 2^1 + b_2 \cdot 2^2 + \cdots + b_{n+1-2} \cdot 2^{n+1-2} + b_{n+1-1} \cdot 2^{n+1-1}
+\end{equation*}
+
+Da alle Bits ausser das Bit an der $n+1$-ten Stelle (\say{das Bit ganz links}) $0$ sind, können wir die Formel vereinfachen:
+
+\begin{equation*}
+0 \cdot 2^0 + 0 \cdot 2^1 + 0 \cdot 2^2 + \cdots + 0 \cdot 2^{n+1-2} + 1 \cdot 2^{n+1-1}
+\end{equation*}
+
+Eine Multiplikation mit $0$ ergibt $0$. Wir erhalten: $1 \cdot 2^{n+1-1}$. Wir können den Exponenten vereinfachen: $n+1-1 = n$. Wir erhalten somit folgendes Ergebnis:\\
+
+\textbf{Eine Dualzahl mit einer (führenden) $1$ und $n$ (folgenden) Nullen entspricht der Zahl $2^n$ im Dezimalsystem.}\\
+
+\item Für eine Dualzahl mit $n$ Einsen besitzt die um $1$ grössere Dualzahl eine Eins und $n$ Nullen.\\
+
+Beispiel: Für die Dualzahl $1111_2 (=15_{10})$ ist $10000 (=16_{10})$ die um $1$ grössere Dualzahl.
+
+ Wir können somit eine Dualzahl mit $n$ Einsen mit einer Formel ausdrücken, in dem wir die Dualzahl mit einer Eins und $n$ Nullen berechnen und dann davon $1$ abziehen. Wir verwenden dazu die Formel aus der vorherigen Aufgabe:
+
+\begin{equation*}
+\overbrace{111\dots111}^{n-\textrm{Einsen}}~_2 = 1\overbrace{000\dots000}^{n-\textrm{Nullen}}~_2 - 1_2 = (2^n)_{10}-(1)_{10} = (2^n-1)_{10}
+\end{equation*}
+
+\textbf{Eine Dualzahl mit $n$ Einsen entspricht der Zahl $2^n-1$ im Dezimalsystem.}
+
+\end{enumerate}

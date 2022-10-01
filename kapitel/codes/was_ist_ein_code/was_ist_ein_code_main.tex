@@ -1,3 +1,5 @@
+% !TEX root = ../../../main.tex
+
 \toggletrue{image}
 \toggletrue{imagehover}
 \chapterimage{encoding_2x}
@@ -84,7 +86,7 @@ Auch in der Informatik spielen Codes eine wichtige Rolle. Ohne Codes könnten wi
 In der Informatik geht es bei Codes nicht um geheime Nachrichten. Es geht eigentlich meist darum, wie wir Daten in der für den Menschen verständlichen Form in eine für den Computer (oder ein anderes elektronisches Gerät) verarbeitbare Form umwandeln.
 
 \begin{definition}[Code]
-Ein Code ist eine Vorschrift, die beschreibt, wie wir Daten von einer Darstellung in eine andere Darstellung umwandelnn Dabei dürfen keine Daten verloren gehen. Eine eindeutige Rückumwandlung muss immer möglich sein. Die Vorschrift zur Umwandlung kann durch eine Code-Tabelle, eine mathematische Formel oder ein \say{Kochrezept} notiert werden.
+Ein Code ist eine Vorschrift, die beschreibt, wie wir Daten von einer Darstellung in eine andere Darstellung umwandeln. Dabei dürfen keine Daten verloren gehen. Eine eindeutige Rückumwandlung muss immer möglich sein. Die Vorschrift zur Umwandlung kann durch eine Code-Tabelle, eine mathematische Formel oder ein \say{Kochrezept} notiert werden.
 \end{definition}
 
 \begin{example}
@@ -135,7 +137,18 @@ Das Beispiel macht auf ein Problem aufmerksam. Betrachten wir die Zeichen $\cdot
 Ein Code heisst eindeutig decodierbar genau dann, wenn jedes Code-Wort nur auf eine einzige Art zurückübersetzt (decodiert) werden kann. Auch eine Folge von Code-Wörtern muss eindeutig decodierbar sein.
 \end{definition}
 
-Es müssen dabei nur Wörter eindeutig decodierbar sein, welche zuvor korrekt codiert wurden. Nicht jedes beliebige Wort muss somit (eindeutig) decodierbar sein.
+Es müssen dabei nur Code-Wörter eindeutig decodierbar sein, welche zuvor korrekt codiert wurden. Nicht jedes beliebige Wort muss somit (eindeutig) decodierbar sein.
+
+\section{Aufgaben}
+
+\begin{enumerate}
+\item Decodieren Sie $\cdot~\cdot~/-~\cdot~/~\cdot~\cdot~-~\cdot~/~-~-~-~/~\cdot~-~\cdot~/~-~-~/~\cdot~-~/~-~/~\cdot~\cdot~/~-~\cdot~-$.
+\fillwithgrid{0.25in}
+\item Codieren Sie Ihren Vornamen mit dem Morsecode. Verwenden Sie nur Grossbuchstaben.
+\fillwithgrid{1in}
+\item Zeigen Sie, dass $-~\cdot~-~\cdot~\cdot~\cdot~\cdot~-~-~\cdot$ nicht eindeutig decodiert werden kann (das Trennelement also wirklich notwendig ist).
+\fillwithgrid{1in}
+\end{enumerate}
 
 \section{Binärcodes}
 
@@ -158,14 +171,3 @@ Der Unicode ist ein Binärcode. Wir codieren den Text \say{Dies ist ein Binärco
 \end{lstlisting}
 
 \end{example}
-
-\section{Aufgaben}
-
-\begin{enumerate}
-\item Decodieren Sie $\cdot~\cdot~/-~\cdot~/~\cdot~\cdot~-~\cdot~/~-~-~-~/~\cdot~-~\cdot~/~-~-~/~\cdot~-~/~-~/~\cdot~\cdot~/~-~\cdot~-$.
-\fillwithgrid{0.5in}
-\item Codieren Sie Ihren Vornamen mit dem Morsecode. Verwenden Sie nur Grossbuchstaben.
-\fillwithgrid{0.5in}
-\item Zeigen Sie, dass $-~\cdot~-~\cdot~\cdot~\cdot~-~-~\cdot$ nicht eindeutig decodiert werden kann.
-\fillwithgrid{0.75in}
-\end{enumerate}

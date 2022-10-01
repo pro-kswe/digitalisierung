@@ -1,0 +1,172 @@
+% !TEX root = ../../../main.tex
+
+\toggletrue{image}
+\toggletrue{imagehover}
+\chapterimage{encoding_2x}
+\chapterimagetitle{\uppercase{Encoding}}
+\chapterimageurl{https://xkcd.com/1209/}
+\chapterimagehover{I don't see how; the C0 block is right there at the beginning.}
+
+\chapter{Konstruktion von Blockcodes}
+\label{chapter-konstruktion-blockcodes}
+
+In diesem Kapitel schauen wir uns an, wie wir einen eindeutig decodierbaren Code erstellen. Es ist die Grundlage für zahlreiche Codes, welche täglich im Einsatz sind. Wir beschränken uns bei der Codierung nur auf eine ausgewählte Menge an Zeichen, damit die Beispiele handlich bleiben. Das Lernziel lautet wie folgt:
+
+\newcommand{\konstruktionBlockcodesLernziele}{
+\protect\begin{todolist}
+\item Sie erstellen für eine gegebene Menge von Zeichen einen Blockcode.
+\end{todolist}
+}
+
+\lernziel{\autoref{chapter-konstruktion-blockcodes}, \nameref{chapter-konstruktion-blockcodes}}{\protect\konstruktionBlockcodesLernziele}
+
+\konstruktionBlockcodesLernziele
+
+\section{Was ist ein Blockcode?}
+
+Wenn alle Code-Wörter die gleiche Länge besitzen, dann handelt es sich um einen Blockcode.
+
+\begin{definition}[Blockcode]
+Wenn wir alle Zeichen mit einer festen Länge $n$ codieren (eng. fixed length encoding), dann erhalten wir einen Blockcode. Jedes Code-Wort besitzt dann die Blockgrösse $n$.
+\end{definition}
+
+\begin{example}
+Die \ac{BCD}-Codes aus \autoref{chapter-bcd-codes} sind Blockcodes.
+\end{example}
+
+\section{Warum verwenden wir Blockcodes?}
+
+Betrachten wir das Wort $0001$. Es wurde mit dem Code aus \autoref{table-geo} codiert. Welches Wort wurde für die Codierung benutzt? 
+
+\begin{table}[htb]
+\centering
+\begin{minipage}{0.65\textwidth}
+\centering
+\begin{tabular}{|c|c|}
+\hline
+Zeichen & Code-Wort \\ \hline
+ $\Circle$       & 0         \\ \hline
+ $\Square$       & 00        \\ \hline
+ $\Diamond$       & 1         \\ \hline
+ $\triangle$       & 01        \\ \hline
+\end{tabular}
+\caption{Code-Tabelle für eine Codierung der vier Zeichen.}
+\label{table-geo}
+\end{minipage}
+\hfill
+\begin{minipage}{0.25\textwidth}
+\centering
+\begin{itemize}
+\item $\Circle\Circle\Circle\Diamond$
+\item $\Circle\Square\Diamond$
+\item $\Square\Circle\Diamond$
+\item $\Square\triangle$
+\item $\dots$
+\end{itemize}
+\end{minipage}
+\end{table}
+
+Wir wissen nicht, welches Wort korrekt ist, da mehrere mögliche Wörter beim Decodieren entstehen können (siehe Liste neben \autoref{table-geo}). Wir sprechen nur dann von einem \textbf{eindeutig decodierbaren Code}, wenn jedes Code-Wort exakt zu einem Wort decodiert werden kann.
+
+\begin{important}
+Für alle Codes gilt, dass beim Codieren kein Datenverlust auftreten darf. Wir stellen die Daten lediglich durch andere Zeichen dar.
+\end{important}
+
+Wie können wir einen eindeutig decodierbaren Code erzeugen? Beim Morsecode haben wir ein \say{Trennzeichen} eingebaut, um das Ende und den Beginn eines Code-Wortes zu markieren. Bei Binärcodes gibt es nur zwei Zeichen. Die Verwendung eines Trennzeichens ist nicht möglich. Es gibt jedoch eine sehr einfache Möglichkeit, dieses Problem zu lösen. Wir konstruieren einen Blockcode.
+
+\begin{important}
+Wenn wir einen Blockcode so konstruieren, dass jedes Code-Wort gleich lang ist und nur einmal verwendet wird, dann ist der Code automatisch eindeutig decodierbar.
+\end{important}
+
+Ein Blockcode benötigt kein \say{Trennzeichen} zwischen den Code-Wörtern. Durch die fixe Anzahl an Zeichen pro Code-Wort lassen sich Code-Wörter automatisch trennen.
+
+\section{Wie wir einen binären Blockcode erstellen}
+
+Ein binärer Blockcode hat das Ziel, eine Menge von Zeichen mithilfe von Bits (Binärziffern) zu codieren. Mit folgenden Schritten können wir für eine beliebige Menge von Zeichen einen Blockcode erstellen:
+
+\begin{enumerate}
+\item Berechnungen:
+\begin{enumerate}
+\item Bestimmen Sie die \textbf{Anzahl der Zeichen}, welche codiert werden sollen. \label{blockcode-1}
+\item Codieren Sie die Dezimalzahl aus \ref{blockcode-1} mithilfe des \textbf{Dualcodes}. \label{blockcode-2}
+\item Bestimmen Sie die \textbf{Blockgrösse}: Anzahl der Bits der dualcodierten Zahl aus \ref{blockcode-2}. \label{blockcode-3}
+\end{enumerate}
+\item Tabelle erstellen:
+\begin{enumerate}
+\item Erstellen Sie eine \textbf{Tabelle mit $2$ Spalten}. Die Überschrift der ersten Spalte lautet Zeichen, die Überschrift der zweiten Spalte lautet Code-Wort.
+\item Fügen Sie \textbf{pro Zeichen eine Zeile} in die Tabelle ein. Verteilen Sie die Zeichen in der ersten Spalte. Pro Zeile ein Zeichen.
+\item Fügen Sie in die zweite Spalte die Code-Wörter ein. \textbf{Pro Zeile ein Code-Wort}. Sie erhalten die Code-Wörter durch \say{duales Zählen}. Alle Code-Wörter müssen gleich lang sein. Benutzen Sie die Blockgrösse aus \ref{blockcode-3}.
+\end{enumerate}
+\end{enumerate}
+
+Wir verbessern nun den Code aus \autoref{table-geo}. Wir erzeugen einen Blockcode.
+
+\begin{table}[htb]
+\centering
+\begin{minipage}{0.6\textwidth}
+\begin{example}
+Wir möchten jedes Zeichen aus $\mathscr{A}_{Geo}$ codieren. Es gibt vier Zeichen ($\Circle$, $\Square$, $\Diamond$, $\triangle$) in $\mathscr{A}_{Geo}$, das heisst $|\mathscr{A}_{Geo}| = 4$. Wir benötigen also  $log_2(|\mathscr{A}_{Geo}|)=log_2(4)=2$ Bits pro Code-Wort. Wir müssen also für jedes der vier Zeichen ein Code-Wort aus zwei Bits erzeugen. Kein Code-Wort darf dabei mehrfach verwendet werden. Wir erhalten \autoref{table-geo-blockcode}.
+\end{example}
+\end{minipage}
+\hfill
+\begin{minipage}{0.35\textwidth}
+\centering
+\begin{tabular}{|c|c|}
+\hline
+Zeichen & Code-Wort \\ \hline
+ $\Circle$       & 10         \\ \hline
+ $\Square$       & 00        \\ \hline
+ $\Diamond$       & 11         \\ \hline
+ $\triangle$       & 01        \\ \hline
+\end{tabular}
+\caption{Code-Tabelle für den Blockcode von $\mathscr{A}_{Geo}$.}
+\label{table-geo-blockcode}	
+\end{minipage}
+\end{table}
+
+\begin{important}
+Mit einem Blockcode $\mathscr{A}^n_{Bin}$ (ein Binärcode bei dem alle Code-Wörter $n$ Bits besitzen) lassen sich maximal $2^n$ Zeichen aus $\mathscr{A}$ codieren. Umgekehrt gilt: Möchte man $|\mathscr{A}|$ Zeichen codieren, dann benötigt man mindestens $log_2(|\mathscr{A}|)$ Bits pro Code-Wort, also einen Blockcode mit einer Mindestlänge von $log_2(|\mathscr{A}|)$ Bits.
+\end{important}
+
+\subsection{Aufgaben 3}
+
+Wir betrachten den Morsecode aus \autoref{table-morse}.
+
+\begin{enumerate}
+\item Ist der Morsecode auch ein Blockcode? Begründen Sie Ihre Antwort.
+\item Beim Morsecode können keine zwei Code-Wörter verwechselt werden. Jedes Code-Wort ist somit eindeutig decodierbar. Wodurch gelingt dies?
+\item Wie wird beim Morsecode sichergestellt, dass eine Folge von Code-Wörtern eindeutig decodierbar sind?
+\item Erstellen Sie einen binären Blockcode für $\mathscr{A}_{Arrows} = \{$\faAngleDoubleDown, \faAngleDoubleLeft, \faAngleDoubleRight, \faAngleDoubleUp, \faAngleDown, \faAngleLeft, \faAngleRight, \faAngleUp $\}$.
+\end{enumerate}
+
+\begin{example}
+Als \say{Eingangsbeispiel} möchten wir $\mathscr{A}_{Lat} = \{A, B, C, \dots, X, Y, Z\}$ codieren. Es geht also darum, wie man für jedes Zeichen aus $\mathscr{A}_{Lat}$ ein Code-Wort aus $\mathscr{A}_{Bin}^*$ erzeugen kann (binärer Blockcode: $\mathscr{A}_{Lat} \rightarrow \mathscr{A}_{Bin}^*$).
+
+$\mathscr{A}_{Lat}$ besteht aus $26$ Zeichen, das heisst $|\mathscr{A}_{Lat}| = 26$. Jedes Code-Wort benötigt somit $5$ Bits (da $log_2(|\mathscr{A}|)=log_2(26)\approx4.7$). \autoref{table-code-lat} zeigt den vollständigen Code. Alle Code-Wörter sind $5$ Bits lang. Wir beginnen mit dem Code-Wort $00000$. Wir zählen dann \say{binär}, das heisst dualcodiert, bis $25$.
+
+\begin{table}[htb]
+\centering
+\begin{tabular}{|c|c||c|c||c|c||c|c|}
+\hline
+\footnotesize
+\textbf{Zeichen} & \footnotesize \textbf{Code-Wort} & \footnotesize \textbf{Zeichen} & \footnotesize \textbf{Code-Wort} & \footnotesize \textbf{Zeichen} & \footnotesize \textbf{Code-Wort} & \footnotesize \textbf{Zeichen} & \footnotesize \textbf{Code-Wort} \\ \hline
+A & $00000$ & H & $00111$ & O & $01110$ & V & $10101$ \\ \hline
+B & $00001$ & I & $01000$ & P & $01111$ & W & $10110$ \\ \hline
+C & $00010$ & J & $01001$ & Q & $10000$ & X & $10111$ \\ \hline
+D & $00011$ & K & $01010$ & R & $10001$ & Y & $11000$ \\ \hline
+E & $00100$ & L & $01011$ & S & $10010$ & Z & $11001$ \\ \hline
+F & $00101$ & M & $01100$ & T & $10011$ & & \\ \hline
+G & $00110$ & N & $01101$ & U & $10100$ & & \\ \hline
+\end{tabular}
+\caption{Die Code-Wörter $11010$, $11011$, $11100$, $11101$, $11110$, $11111$ gehören nicht zum Code und dürfen nicht benutzt werden. Aus Platzgründen wurde die Tabelle in vier Teile aufgeteilt.}
+\label{table-code-lat}
+\end{table}
+
+\end{example}
+
+\subsubsection{Aufgaben 6}
+
+\begin{enumerate}
+\item Codieren Sie das Wort MENSA mit dem Code aus \autoref{table-code-lat}.
+\item Decodieren Sie das Wort $00000000010000100000$ mit dem Code aus \autoref{table-code-lat}.
+\end{enumerate}

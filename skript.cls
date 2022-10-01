@@ -53,7 +53,12 @@
 \RequirePackage[ngerman]{babel}
 \RequirePackage[inline]{enumitem} 
 \RequirePackage{caption}
-\RequirePackage{dirtytalk}
+\RequirePackage[%
+   left     = \glqq,%
+   right    = \grqq,%
+   leftsub  = \glq,%
+   rightsub = \grq%
+ ]{dirtytalk}
 \RequirePackage{listings}
 \RequirePackage[footnote, smaller]{acronym}
 \RequirePackage{geometry} % Required for adjusting page dimensions and margins

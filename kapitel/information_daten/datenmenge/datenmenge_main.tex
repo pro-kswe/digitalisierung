@@ -1,3 +1,5 @@
+% !TEX root = ../../../main.tex
+
 \toggletrue{image}
 \toggletrue{imagehover}
 \chapterimage{kilobyte}
@@ -53,7 +55,6 @@ $1$ Byte = \qty{1}{\byte} = \qty{8}{\bit}
 Die Datenmenge der Binärdaten \texttt{0011001111001110} lautet \qty{16}{\bit} = \qty{2}{\byte}.
 \end{example}
 
-
 \subsection{Übrigens...}
 
 Historisch gesehen gab es auch Computer, welche eine andere Anzahl von Bits gruppiert haben. Es gibt auch noch heute eine sehr kleine Anzahl von Systemen, bei denen ein Byte eine Folge von $7$ Bits bezeichnet. Heute verwenden jedoch praktisch alle Computer die \say{übliche $8$-er Gruppierung}. Typischerweise ist \qty{1}{\byte}die kleinste Einheit die im Speicher angelegt werden kann. Auch wenn man nur ein Bit speichern möchte, wird immer ein ganzes Byte im Speicher reserviert. 
@@ -97,6 +98,15 @@ Der Grund für diese Masseinheiten liegt an der Funktionsweise des Arbeitsspeich
 Unter Informatikern ist es üblich von Kilobyte, Megabyte, Gigabyte und Terabyte zu sprechen, aber die Umrechnungen gemäss Kibibyte, Mebibyte, Gibibyte und Tebibyte anzuwenden. Die \say{korrekte} Bezeichnung für die Umwandlung mit $2^{10}$ hat sich in der Umgangssprache kaum durchgesetzt. Es kann deshalb oft zu Verwirrungen kommen, was nun gemeint ist.
 \end{important}
 
+\section{Speicherbedarf und Speicherkapazität}
+
+Wir unterscheiden die Begriffe wie folgt:
+
+\begin{itemize}
+\item Speicherkapazität: Wie lautet die maximale Datenmenge für einen Datenspeicher (z.B. Festplatte)?
+\item Speicherbedarf: Welche Datenmenge nimmt ein Objekt ein (z.B eine Bilddatei)?
+\end{itemize}
+
 \newpage
 
 \section{Aufgaben}
@@ -105,10 +115,10 @@ Unter Informatikern ist es üblich von Kilobyte, Megabyte, Gigabyte und Terabyte
 \fillwithgrid{1in}
 \item Eine Standard-CD hat eine Grösse von  \qty{650}{\mega\byte}. Wie viele Bytes haben darauf Platz? Wie viele Bits?
 \fillwithgrid{1in}
-\item Ein Unternehmen verkauft Notebooks mit verschiedenen Arbeitsspeichergrössen. Auf seinen Datenblättern gibt er die Speichergrössen, so wie im Handel üblich, mit dem Umwandlungsfaktor $10^3$ an. Das Notebook wird mit  \qty{4}{\giga\byte} beworben. Wie viele Bytes erhalten Sie laut Datenblatt?
-\fillwithgrid{1in}
+\item Ein Unternehmen verkauft Notebooks mit verschiedenen Arbeitsspeichergrössen. Das Notebook wird mit  \qty{4}{\giga\byte} beworben. Wie viele Bytes erhalten Sie?
+\fillwithgrid{1.25in}
 \item Bob erzählt Ihnen, dass der Arbeitsspeicher des Notebooks eigentlich immer eine $2$-er Potenz ist. Wenn Sie laut Hersteller also ein Notebook mit \qty{4}{\giga\byte} kaufen, dann sind es eigentlich \qty{4}{GiB}. Wie viele Bytes erhalten Sie also? Vergleichen Sie die Anzahl mit der vorherigen Aufgabe. Was fällt auf?
-\fillwithgrid{1in}
+\fillwithgrid{1.5in}
 \item Welche Datenmenge wird benötigt, um folgende Informationen zu speichern? Ordnen Sie die Informationen den passenden Datenmengen zu.
 \begin{multicols}{3}
 \begin{todolist}

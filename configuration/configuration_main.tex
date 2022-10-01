@@ -32,6 +32,13 @@
 \newcommand*\circled[1]{\tikz[baseline=(char.base)]{
             \node[shape=circle, draw, inner sep=2pt] (char) {#1};}}
 
+\newcommand{\tikzmarktable}[1]{\tikz[overlay, remember picture] \node (#1) {};}
+\newcommand{\DrawLine}[3][]{%
+    \begin{tikzpicture}[overlay, remember picture]
+        \draw [#1] ($(#2)+(0,0.6ex)$) -- ($(#3)+(0,0.6ex)$);
+    \end{tikzpicture}%
+}%
+
 \setlength{\parindent}{0pt}
 
 % TODO: remove

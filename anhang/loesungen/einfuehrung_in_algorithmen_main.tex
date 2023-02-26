@@ -1,0 +1,55 @@
+\section{\autoref{chapter-einfuehrung-algo}, \nameref{chapter-einfuehrung-algo}}
+
+\subsection*{\ref{section-aufgaben-einfuehrung-in-algorithmen} \nameref{section-aufgaben-einfuehrung-in-algorithmen}}
+
+\begin{enumerate}
+
+\item Lösungsvorschlag:
+
+\begin{lstlisting}[language=pseudocode, caption={Algorithmus für das Problem \protect\autoref{problem-durchschnitt-3-zahlen}}, label={lst-algo-durchschnitt-3-zahlen}]
+input: Drei Zahlen z1, z2 und z3
+summe $\gets$ z1 + z2
+summe $\gets$ summe + z3
+mittelwert $\gets$ summe / 3
+output: mittelwert
+\end{lstlisting}
+
+\item Lösungsvorschlag:
+
+\begin{lstlisting}[language=pseudocode, caption={Algorithmus für das Problem \protect\autoref{problem-minimum-n-zahlen}}, label={lst-algo-minimum-n-zahlen}]
+input: Eine Liste L mit n Zahlen.
+aktuelles_minimum $\gets$ $\infty$
+for i von 0 bis und mit n - 1:
+ if aktuelles_minimum > L[i] then:
+  aktuelles_minimum $\gets$ L[i]
+output: aktuelles_minimum
+\end{lstlisting}
+
+\item Lösungsvorschlag:
+
+\begin{lstlisting}[language=pseudocode, caption={Algorithmus für das Problem \protect\autoref{problem-addieren-n-zahlen}}, label={lst-algo-addieren-n-zahlen}]
+input: Eine Liste L mit n Zahlen.
+summe $\gets$ 0
+for i von 0 bis und mit n - 1:
+ summe $\gets$ summe + L[i]
+output: summe
+\end{lstlisting}
+
+\newpage
+
+\item Lösungsvorschlag:
+
+\begin{lstlisting}[language=pseudocode, caption={Algorithmus für das Problem \protect\autoref{problem-anzahl-minima-n-zahlen}}, label={lst-algo-anzahl-minima-n-zahlen}]
+input: Eine Liste L mit n Zahlen.
+aktuelles_minimum $\gets$ $\infty$
+for i von 0 bis und mit n - 1:
+ if aktuelles_minimum > L[i] then:
+  aktuelles_minimum $\gets$ L[i]
+anzahl = 0
+for i von 0 bis und mit n - 1:
+ if aktuelles_minimum = L[i] then:
+  anzahl++ 
+output: anzahl
+\end{lstlisting}
+
+\end{enumerate}

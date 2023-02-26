@@ -1,0 +1,191 @@
+\subsection*{\ref{subsection-aufgaben-digitaltechnik-addition-wahrheitstabelle} \nameref{subsection-aufgaben-digitaltechnik-addition-wahrheitstabelle}}
+
+\begin{enumerate}
+	\item Wir erhalten für $s = ((\neg x) \wedge y) \vee (x \wedge (\neg y))$ und für $c_o = (x \wedge y)$. In diesem Beispiel gibt es zwei \say{Ausgänge}. Pro Ausgang ($s$ und $c_o$) erhalten wir eine Boolesche Formel.
+	\item Wir erhalten das folgende Schaltnetz:
+
+\begin{figure}[htb]
+\centering
+\begin{circuitikz}
+\draw (-2, 1) node[and port] (AND1) {};
+\draw (-2, -1) node[and port] (AND2) {}; 
+\draw (0, -2.5) node[and port] (AND3) {};
+
+\draw (0,0) node[or port] (OR1) {}; 
+
+\draw (-4,1.5) node[european not port] (NOT1) {};
+\draw (-4,-1.5) node[european not port] (NOT2) {};
+
+\draw (OR1.out) node[anchor=west] {$s$};
+\draw (AND3.out) node[anchor=west] {$c_o$};
+
+\draw (-8, 0.5) node (x) {$x$};
+\draw (-7, 0.5) node[circle, fill, inner sep=1pt] (xC1) {};
+\draw (-7, -0.775) node[circle, fill, inner sep=1pt] (xC2) {};
+
+\draw (-8, -0.25) node (y) {$y$};
+\draw (-7.5, -0.25) node[circle, fill, inner sep=1pt] (yC1) {};
+\draw (-7.5, -1.5) node[circle, fill, inner sep=1pt] (yC2) {};
+
+\draw (AND1.out) |- (OR1.in 1);
+\draw (AND2.out) |- (OR1.in 2);
+
+\draw (NOT1.out) |- (AND1.in 1);
+\draw (NOT2.out) |- (AND2.in 2);
+
+\draw (x.east) |- (xC1);
+\draw (xC1) |- (NOT1.in);
+\draw (xC1) |- (AND2.in 1);
+\draw (xC2) |- (AND3.in 1);
+
+\draw (y.east) |- (yC1);
+\draw (yC1) |- (NOT2.in);
+\draw (yC1) |- (AND1.in 2);
+\draw (yC2) |- (AND3.in 2);
+\end{circuitikz}
+\end{figure}
+
+\end{enumerate}
+
+\subsection*{\ref{subsection-aufgaben-digitaltechnik-volladdierer} \nameref{subsection-aufgaben-digitaltechnik-volladdierer}}
+
+\begin{enumerate}
+	\item Bei drei Eingängen gibt es $2^3 = 8$ Zeilen in der Wahrheitstabelle. \autoref{addition-volladdierer-ttt-loesung} zeigt die ausgefüllte Wahrheitstabelle.
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{|c|c|c||c|c|}
+\hline
+Bit $x$ & Bit $y$ & eingehender Übertrag $c_i$ & Summe $s$ & ausgehender Übertrag $c_o$ \\ \hline
+$0$ & $0$ & $0$ & $0$ & $0$ \\ \hline
+$0$ & $0$ & $1$ & $1$ & $0$ \\ \hline
+$0$ & $1$ & $0$ & $1$ & $0$ \\ \hline
+$0$ & $1$ & $1$ & $0$ & $1$ \\ \hline
+$1$ & $0$ & $0$ & $1$ & $0$ \\ \hline
+$1$ & $0$ & $1$ & $0$ & $1$ \\ \hline
+$1$ & $1$ & $0$ & $0$ & $1$ \\ \hline
+$1$ & $1$ & $1$ & $1$ & $1$ \\ \hline
+\end{tabular}
+\caption{Wahrheitstabelle}
+\label{addition-volladdierer-ttt-loesung}
+\end{table}
+
+\item Pro Ausgang ($s$ und $c_o$) gibt es eine Boolesche Formeln in \ac{DNF}.
+
+\begin{itemize}
+	\item $s = ((\neg x) \wedge (\neg y) \wedge c_i) \vee ((\neg x) \wedge y \wedge (\neg c_i)) \vee (x \wedge (\neg y) \wedge (\neg c_i)) \vee (x \wedge y \wedge c_i)$
+	\item $c_o = ((\neg x) \wedge y \wedge c_i) \vee (x \wedge (\neg y) \wedge c_i) \vee (x \wedge y \wedge (\neg c_i)) \vee (x \wedge y \wedge c_i)$
+\end{itemize}
+
+\end{enumerate}
+
+\newpage
+
+\subsection*{\ref{subsection-aufgaben-digitaltechnik-ripple-carry-addierer} \nameref{subsection-aufgaben-digitaltechnik-ripple-carry-addierer}}
+
+\begin{enumerate}
+\item Da bei der Addition der ersten beiden Ziffern kein eingehender Übertrag vorhanden ist, kann man das Bit einfach auf $0$ setzen. So wird die Summe nicht verändert und das Schaltnetz funktioniert mit dem \ac{FA} weiterhin.
+\item Es braucht fünf \ac{FA}. \autoref{ripple-carry-5bit} zeigt das Schaltnetz. Es kann auch eine vierstellige Binärzahl und eine fünfstellige Binärzahl addiert werden. Das letzte Bit der vierstelligen Binärzahl ($a_4$) muss einfach auf $0$ gesetzt werden.
+
+\begin{figure}[htb]
+\centering
+\begin{circuitikz}[american, transform shape]
+	\draw (0,0) node[dipchip, num pins=6, hide numbers, no topmark, external pins width=0, rotate=90] (FA) {\ac{FA}};
+	\draw (FA.pin 1) -- ++(0, -0.5) coordinate(extpinco0) node[right] (co0) {$c_o$};
+	\draw (FA.pin 3) -- ++(0, -0.5) coordinate(extpin) node[below] (s0) {$s_0$};
+	\draw (FA.pin 4) -- ++(0, 0.5) coordinate(extpin) node[above] (ci0) {$c_i$};
+	\draw (FA.pin 5) -- ++(0, 0.5) coordinate(extpin) node[above] (a0) {$a_0$};
+	\draw (FA.pin 6) -- ++(0, 0.5) coordinate(extpin) node[above] (b0) {$b_0$};
+	
+	\draw (-3,0) node[dipchip, num pins=6, hide numbers, no topmark, external pins width=0, rotate=90] (FA) {\ac{FA}};
+	\draw (FA.pin 1) -- ++(0, -0.5) coordinate(extpinco1) node[right] (co1) {$c_o$};
+	\draw (FA.pin 3) -- ++(0, -0.5) coordinate(extpin) node[below] (s1) {$s_1$};
+	\draw (FA.pin 4) -- ++(0, 0.5) coordinate(extpinci1) node[above] (ci1) {$c_i$};
+	\draw (FA.pin 5) -- ++(0, 0.5) coordinate(extpin) node[above] (a1) {$a_1$};
+	\draw (FA.pin 6) -- ++(0, 0.5) coordinate(extpin) node[above] (b1) {$b_1$};
+	\draw (extpinco0) --++(-1,0) |- (extpinci1);
+	
+	\draw (-6,0) node[dipchip, num pins=6, hide numbers, no topmark, external pins width=0, rotate=90] (FA) {\ac{FA}};
+	\draw (FA.pin 1) -- ++(0, -0.5) coordinate(extpinco2) node[right] (co2) {$c_o$};
+	\draw (FA.pin 3) -- ++(0, -0.5) coordinate(extpin) node[below] (s2) {$s_2$};
+	\draw (FA.pin 4) -- ++(0, 0.5) coordinate(extpinci2) node[above] (ci2) {$c_i$};
+	\draw (FA.pin 5) -- ++(0, 0.5) coordinate(extpin) node[above] (a2) {$a_2$};
+	\draw (FA.pin 6) -- ++(0, 0.5) coordinate(extpin) node[above] (b2) {$b_2$};
+	\draw (extpinco1) --++(-1,0) |- (extpinci2);
+	
+	\draw (-9,0) node[dipchip, num pins=6, hide numbers, no topmark, external pins width=0, rotate=90] (FA) {\ac{FA}};
+	\draw (FA.pin 1) -- ++(0, -0.5) coordinate(extpinco3) node[right] (co3) {$c_o$};
+	\draw (FA.pin 3) -- ++(0, -0.5) coordinate(extpin) node[below] (s3) {$s_3$};
+	\draw (FA.pin 4) -- ++(0, 0.5) coordinate(extpinci3) node[above] (ci3) {$c_i$};
+	\draw (FA.pin 5) -- ++(0, 0.5) coordinate(extpin) node[above] (a3) {$a_3$};
+	\draw (FA.pin 6) -- ++(0, 0.5) coordinate(extpin) node[above] (b3) {$b_3$};
+	\draw (extpinco2) --++(-1,0) |- (extpinci3);
+	
+	\draw (-12,0) node[dipchip, num pins=6, hide numbers, no topmark, external pins width=0, rotate=90] (FA) {\ac{FA}};
+	\draw (FA.pin 1) -- ++(0, -0.5) coordinate(extpin) node[right] (co4) {$c_o$};
+	\draw (FA.pin 3) -- ++(0, -0.5) coordinate(extpin) node[below] (s4) {$s_4$};
+	\draw (FA.pin 4) -- ++(0, 0.5) coordinate(extpinci4) node[above] (ci4) {$c_i$};
+	\draw (FA.pin 5) -- ++(0, 0.5) coordinate(extpin) node[above] (a4) {$a_4$};
+	\draw (FA.pin 6) -- ++(0, 0.5) coordinate(extpin) node[above] (b4) {$b_4$};
+	\draw (extpinco3) --++(-1,0) |- (extpinci4);
+\end{circuitikz}
+\caption{Fünf Volladdierer. Diese können zwei 5-Bit Zahlen addieren.}
+\label{ripple-carry-5bit}
+\end{figure}
+
+\item Der erste Volladdierer muss im Prinzip nur zwei Binärziffern addieren. Die dritte Binärziffer (der eingehende Übertrag $c_i$) ist immer $0$. Wenn man nur zwei Binärziffern addieren muss, dann kann man den ersten Volladdierer durch einen Halbaddierer ersetzen. \autoref{ripple-carry-5bit-with-ha} zeigt dies am Beispiel eines 5-Bit Ripple-Carry-Addierers.
+
+\begin{figure}[htb]
+\centering
+\begin{circuitikz}[american, transform shape]
+	\draw (0,0) node[dipchip, num pins=6, hide numbers, no topmark, external pins width=0, rotate=90] (HA) {\ac{HA}};
+	\draw (HA.pin 1) -- ++(0, -0.5) coordinate(extpinco0) node[right] (co0) {$c_o$};
+	\draw (HA.pin 3) -- ++(0, -0.5) coordinate(extpin) node[below] (s0) {$s_0$};
+	\draw (HA.pin 4) -- ++(0, 0.5) coordinate(extpin) node[above] (a0) {$a_0$};
+	\draw (HA.pin 6) -- ++(0, 0.5) coordinate(extpin) node[above] (b0) {$b_0$};
+	
+	\draw (-3,0) node[dipchip, num pins=6, hide numbers, no topmark, external pins width=0, rotate=90] (FA) {\ac{FA}};
+	\draw (FA.pin 1) -- ++(0, -0.5) coordinate(extpinco1) node[right] (co1) {$c_o$};
+	\draw (FA.pin 3) -- ++(0, -0.5) coordinate(extpin) node[below] (s1) {$s_1$};
+	\draw (FA.pin 4) -- ++(0, 0.5) coordinate(extpinci1) node[above] (ci1) {$c_i$};
+	\draw (FA.pin 5) -- ++(0, 0.5) coordinate(extpin) node[above] (a1) {$a_1$};
+	\draw (FA.pin 6) -- ++(0, 0.5) coordinate(extpin) node[above] (b1) {$b_1$};
+	\draw (extpinco0) --++(-1,0) |- (extpinci1);
+	
+	\draw (-6,0) node[dipchip, num pins=6, hide numbers, no topmark, external pins width=0, rotate=90] (FA) {\ac{FA}};
+	\draw (FA.pin 1) -- ++(0, -0.5) coordinate(extpinco2) node[right] (co2) {$c_o$};
+	\draw (FA.pin 3) -- ++(0, -0.5) coordinate(extpin) node[below] (s2) {$s_2$};
+	\draw (FA.pin 4) -- ++(0, 0.5) coordinate(extpinci2) node[above] (ci2) {$c_i$};
+	\draw (FA.pin 5) -- ++(0, 0.5) coordinate(extpin) node[above] (a2) {$a_2$};
+	\draw (FA.pin 6) -- ++(0, 0.5) coordinate(extpin) node[above] (b2) {$b_2$};
+	\draw (extpinco1) --++(-1,0) |- (extpinci2);
+	
+	\draw (-9,0) node[dipchip, num pins=6, hide numbers, no topmark, external pins width=0, rotate=90] (FA) {\ac{FA}};
+	\draw (FA.pin 1) -- ++(0, -0.5) coordinate(extpinco3) node[right] (co3) {$c_o$};
+	\draw (FA.pin 3) -- ++(0, -0.5) coordinate(extpin) node[below] (s3) {$s_3$};
+	\draw (FA.pin 4) -- ++(0, 0.5) coordinate(extpinci3) node[above] (ci3) {$c_i$};
+	\draw (FA.pin 5) -- ++(0, 0.5) coordinate(extpin) node[above] (a3) {$a_3$};
+	\draw (FA.pin 6) -- ++(0, 0.5) coordinate(extpin) node[above] (b3) {$b_3$};
+	\draw (extpinco2) --++(-1,0) |- (extpinci3);
+	
+	\draw (-12,0) node[dipchip, num pins=6, hide numbers, no topmark, external pins width=0, rotate=90] (FA) {\ac{FA}};
+	\draw (FA.pin 1) -- ++(0, -0.5) coordinate(extpin) node[right] (co4) {$c_o$};
+	\draw (FA.pin 3) -- ++(0, -0.5) coordinate(extpin) node[below] (s4) {$s_4$};
+	\draw (FA.pin 4) -- ++(0, 0.5) coordinate(extpinci4) node[above] (ci4) {$c_i$};
+	\draw (FA.pin 5) -- ++(0, 0.5) coordinate(extpin) node[above] (a4) {$a_4$};
+	\draw (FA.pin 6) -- ++(0, 0.5) coordinate(extpin) node[above] (b4) {$b_4$};
+	\draw (extpinco3) --++(-1,0) |- (extpinci4);
+\end{circuitikz}
+\caption{Fünf Volladdierer. Diese können zwei 5-Bit Zahlen addieren.}
+\label{ripple-carry-5bit-with-ha}
+\end{figure}
+
+\item Lösungen zu den Teilaufgaben:
+\begin{enumerate}
+\item Pro Stelle wird ein Volladdierer benötigt. Bei Binärzahlen mit maximal vier Stellen benötigt man vier Volladdierer. Bei Binärzahlen mit maximal acht Stellen benötigt man acht Volladdierer. Für Binärzahlen mit $n$ Stellen benötigt man somit $n$ Volladdierer (oder $n-1$ Volladdierer und einen Halbaddierer).
+\item Wenn man zwei $n$-stellige Binärzahlen addiert, dann kann die Summe maximal $n+1$ Stellen besitzen (manche Stellen davon sind eventuell $0$, z.B. $000001000010$ bei $12$ Stellen). Das Schaltnetz hat $n$ Ausgänge für die Summe ($s_0$ bis $s_{n-1}$) und einen Ausgang $c_{o}$. Der letzte ausgehende Übertrag kann ebenfalls zur Summe gezählt werden.
+\item Jeder Volladdierer hat zwei Eingänge, da pro Volladdierer zwei Binärziffern einer Stelle addiert werden (z.B. $a_2$ und $b_2$). Somit erhalten wir bei $n$ Volladdierern, $2 \cdot n$ Eingänge. Zählt man nun noch den $c_{i}$ des ersten Volladdierers hinzu, dann hat das Schaltnetz $2 \cdot n + 1$ Eingänge.
+\item Jeder Volladdierer erzeugt eine Stelle für die Summe. Bei $n$ Volladdierern werden somit $n$ Stellen für die Summe erzeugt. Jede Stelle der Summe ist ein Ausgang. Zusätzlich ist beim letzten Volladdierer das $c_{o}$ noch als Ausgang zu zählen. Wir haben also $n+1$ Ausgänge.
+\end{enumerate}
+
+\end{enumerate}

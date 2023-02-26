@@ -1,0 +1,12 @@
+\newcommand{\listlernzielname}{Liste der Lernziele}
+\newlistof[chapter]{lernziel}{lern}{\listlernzielname}
+
+\newcommand{\lernziel}[2]{%
+\refstepcounter{lernziel}
+\addcontentsline{lern}{lernziel}{{\newline\sffamily\bfseries #1} \protect\hspace*{\protect\fill} #2 {\sffamily Seite}}
+}
+
+\renewcommand{\cftlernzielnumwidth}{0em}
+\renewcommand{\cftlernzielpagefont}{\sffamily}
+\renewcommand{\cftbeforelerntitleskip}{0pt}
+\renewcommand{\cftafterlerntitleskip}{0pt}

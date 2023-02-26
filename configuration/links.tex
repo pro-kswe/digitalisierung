@@ -1,0 +1,19 @@
+%----------------------------------------------------------------------------------------
+%	LINKS
+%----------------------------------------------------------------------------------------
+
+%\hypersetup{hidelinks, colorlinks=false, breaklinks=true, urlcolor=ocre, bookmarks=true, bookmarksopen=false}
+\hypersetup{hidelinks, colorlinks=false, breaklinks=true, urlcolor=ocre, bookmarksopen=false}
+
+\bookmarksetup{
+open,
+numbered,
+addtohook={%
+\ifnum\bookmarkget{level}=0 % chapter
+\bookmarksetup{bold}%
+\fi
+\ifnum\bookmarkget{level}=-1 % part
+\bookmarksetup{color=ocre,bold}%
+\fi
+}
+}

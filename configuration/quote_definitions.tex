@@ -1,0 +1,13 @@
+\newtcolorbox{fancyquotes}{%
+	enhanced jigsaw, 
+	breakable,      	% allow page breaks
+	frame hidden,   	% hide the default frame
+	left=0.5cm,       	% left margin
+	right=0.5cm,      	% right margin
+	overlay={%
+		\node [scale=2, text=black, inner sep=0pt] at ([xshift=0.3cm, yshift=-0.5cm]frame.north west){``}; 
+		\node [scale=2, text=black, inner sep=0pt] at ([xshift=-0.3cm]frame.south east){''};  
+	},
+	% paragraph skips obeyed within tcolorbox
+	parbox=false,
+}

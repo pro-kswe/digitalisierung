@@ -1,0 +1,145 @@
+% !TEX root = ../../../main.tex
+
+\toggletrue{image}
+\toggletrue{imagehover}
+\chapterimage{digits}
+\chapterimagetitle{\uppercase{Digits}}
+\chapterimageurl{https://xkcd.com/1344/}
+\chapterimagehover{It's taken me 20 years to get over skyline tetris.}
+
+\chapter{\acs{BCD}-Codes}
+\label{chapter-bcd-codes}
+
+Im Vergleich zum Dualcode (siehe \autoref{chapter-dualcode}) verfolgen \ac{BCD}-Codes den Ansatz isoliert jede Dezimalziffer zu codieren. Eine Dezimalziffer können wir auf unterschiedliche Weise codieren. Wir schauen uns hier zwei Verfahren an. Die Lernziele lauten:
+
+\newcommand{\bcdCodesLernziele}{
+\protect\begin{todolist}
+\item Sie erklären das Prinzip von \acs{BCD}-Codes.
+\item Sie erklären einen \acs{BCD}-Code an einem Beispiel.
+\item Sie wenden einen \acs{BCD}-Code an.
+\end{todolist}
+}
+
+\lernziel{\autoref{chapter-bcd-codes}, \nameref{chapter-bcd-codes}}{\protect\bcdCodesLernziele}
+
+\bcdCodesLernziele
+
+\section{8-4-2-1-\acs{BCD}-Code}
+
+Bei diesem Code wird jeder Dezimalziffer eine $4$-Bit-Zahl zugeordnet. Die Codierung der Dezimalziffer erfolgt mittels Dualcode (siehe \autoref{chapter-dualcode}). Wir übersetzen jede Ziffer gemäss Dualcode. Besitzt die Dualzahl keine $4$ Bits, dann \say{füllen} wir mit Nullen auf. Wir erhalten somit für den Code \autoref{table-8421bcd}.
+
+\begin{table}[htb]
+\centering
+\begin{tabular}{|c|c|c|c|c|c|c|c|}
+\hline
+Ziffer & Code-Wort & Ziffer & Code-Wort & Ziffer & Code-Wort & Ziffer & Code-Wort \\ \hline
+0       &   0000        & 5       &   0101        &     \tikzmarktable{StartA}    &  1010   &         &  1111\tikzmarktable{EndA}    \\ \hline
+1       &   0001        & 6       &   0110        &     \tikzmarktable{StartB}   &  1011   & &     ~~~~\tikzmarktable{EndB}    \\ \hline
+2       &   0010        & 7       &   0111        &     \tikzmarktable{StartC}   &  1100    & &     ~~~~\tikzmarktable{EndC}    \\ \hline
+3       &   0011        & 8       &   1000        &     \tikzmarktable{StartD}    &  1101    & &    ~~~~\tikzmarktable{EndD}    \\ \hline
+4       &   0100        & 9       &   1001        &     \tikzmarktable{StartE}    &  1110    & &     ~~~~\tikzmarktable{EndE}    \\ \hline
+\end{tabular}
+\caption{Code-Tabelle für den 8-4-2-1-\acs{BCD}-Code.}
+\label{table-8421bcd}
+\end{table}
+
+\DrawLine[red, thick]{StartA}{EndA}
+\DrawLine[red, thick]{StartB}{EndB}
+\DrawLine[red, thick]{StartC}{EndC}
+\DrawLine[red, thick]{StartD}{EndD}
+\DrawLine[red, thick]{StartE}{EndE}
+
+Da es zehn Dezimalziffern gibt, benötigen wir mindestens Code-Wörter der Länge vier. Das heisst, jedes Code-Wort besteht aus vier Bits. Da alle Code-Wörter gleich lang sind, handelt es sich um einen \textbf{Blockcode}. Die Blockgrösse beträgt beim 8-4-2-1-\acs{BCD}-Code $4$ Bits.
+
+\begin{hinweis}
+Mathematischer Hintergrund: Möchten wir zehn Zeichen eindeutig mit Binärziffern codieren, dann benötigen wir pro Code-Wort mindestens $log_2(10) \approx \qty{3,32}{\bit}$. Da es nur \say{ganze} Bits gibt, müssen wir $3,32$ aufrunden und erhalten 4 Bits pro Code-Wort.
+\end{hinweis}
+
+Beim 8-4-2-1-\ac{BCD}-Code gibt es mehr $4$-Bit-Zahl als eigentlich notwendig. Einige Code-Wörter (z.B. $1101$) werden nicht \say{gebraucht}. Diese Code-Wörter codieren kein gültiges Zeichen und dürfen \textbf{nicht} verwendet werden. Eine natürliche Zahl wird dann Dezimalziffer für Dezimalziffer codiert. 
+
+\begin{example}
+Die Zahl $42$ wird zu $01000010$ codiert.
+\end{example}
+
+Der 8-4-2-1-\ac{BCD}-Code findet in der Praxis nur noch selten eine Anwendung. Bei einer \ac{SMS}-Nachricht wird die Telefonnummer mittels 8-4-2-1-\ac{BCD}-Code codiert. Bei Binäruhren verwenden die Stunden, Minuten und Sekunden den 8-4-2-1-\ac{BCD}-Code.
+
+\subsection{Warum der Name 8-4-2-1?}
+
+\begin{table}[htb]
+\begin{minipage}{0.65\textwidth}
+Der 8-4-2-1-\ac{BCD} benutzt gerade die ersten vier Stellen einer dualcodierten Zahl. Die ersten vier Stellen einer Dualzahl besitzen die Werte $8$, $4$, $2$ und $1$ (von links nach rechts gelesen). \autoref{table-bcd-naming} zeigt nochmals die Umrechnung der Dualzahl $0101$. Die Stellenwerte in der mittleren Spalte ist der Grund für die Namensgebung. Alle Ziffern im 8-4-2-1-\ac{BCD} können mit diesen vier Stellen codiert werden.
+\end{minipage}
+\hfill
+\begin{minipage}{0.3\textwidth}
+\centering
+\begin{tabular}{|r|r|r|r|}
+\hline
+0 & 1 & 0 & 1 \\ \hline
+8 & 4 & 2 & 1 \\ \hline\hline
+0 & 4 & 0 & 1 \\ \hline
+\end{tabular}
+\caption{Für die Umwandlung berechnen wir: $0 \cdot 8 + 1\cdot 4 + 0 \cdot 2 + 1 \cdot 1 = 5$.}
+\label{table-bcd-naming}
+\end{minipage}
+\end{table}
+
+\subsection{Aufgaben}
+\label{subsection-bcd-8421-aufgaben}
+
+\begin{enumerate}
+\item Codieren Sie die Zahl \num{65536} mit dem 8-4-2-1-\ac{BCD}-Code \label{enum-bcd-1}.
+\fillwithgrid{0.5in}
+\item Wie viele Bits benötigt die codierte Zahl aus Teilaufgabe \ref{enum-bcd-1}?
+\fillwithgrid{0.25in}
+\item Wie viele Bits benötigt man für \num{65536}, wenn man den Dualcode verwendet? Vergleichen Sie die Datenmenge mit dem Ergebnis der vorherigen Teilaufgabe. Tipp: $2^{16} = \num{65536}$.
+\fillwithgrid{0.5in}
+\item Decodieren Sie das Code-Wort $0010000000000001$ mithilfe des 8-4-2-1-\ac{BCD}-Codes.
+\fillwithgrid{0.25in}
+\end{enumerate}
+
+\section{1-aus-10-Code}
+
+Auch beim 1-aus-10-Code handelt es sich um einen \ac{BCD}-Code. Es wird jede Dezimalziffer isoliert codiert. Der 1-aus-10-Code benutzt für die Codierung einer Dezimalziffer eine 10-Bit-Zahl. Die Besonderheit bei diesem Code ist der \textbf{Aufbau} der Code-Wörter. Jedes Code-Wort besitzt \textbf{exakt} eine $1$. Alle anderen Bits des Code-Worts sind $0$. 
+
+\subsection{Wie wird codiert?}
+
+Die \num{1} in der \num{10}-Bit-Zahl \say{wandert} von rechts nach links. Für die Dezimalziffer \num{0} werden \num{9} Nullen notiert und zum Schluss eine \num{1}. Wir erhalten 0000000001. Anschliessend wird die \num{1} pro Dezimalziffer um eine Stelle nach links verschoben. Wir fassen den 1-aus-10-Code als Code-Tabelle zusammen (siehe \autoref{table-1-aus-10}).
+
+\begin{table}[htb]
+\centering
+\begin{tabular}{|c|c|c|c|}
+\hline
+Ziffer & Code-Wort & Ziffer & Code-Wort \\ \hline
+0       &   0000000001        & 5       &   0000100000        \\ \hline
+1       &   0000000010        & 6       &   0001000000        \\ \hline
+2       &   0000000100        & 7       &   0010000000        \\ \hline
+3       &   0000001000        & 8       &   0100000000        \\ \hline
+4       &   0000010000        & 9       &   1000000000        \\ \hline
+\end{tabular}
+\caption{Code-Tabelle für den 1-aus-10-Code.}
+\label{table-1-aus-10}
+\end{table}
+
+Beim 1-aus-10-Code gibt es mehr $10$-Bit-Zahl als eigentlich notwendig. Einige Code-Wörter (z.B. $1010101010$) werden nicht \say{gebraucht}. Diese Code-Wörter codieren kein gültiges Zeichen und dürfen \textbf{nicht} verwendet werden. Eine natürliche Zahl wird dann Dezimalziffer für Dezimalziffer codiert. 
+
+\begin{example}
+Die Zahl $42$ wird zu $00000100000000000100$ codiert.
+\end{example}
+
+Der 1-aus-10-Code (und die Erweiterung davon) findet in der Praxis bei Speicherchips seine Anwendung. Auch im Machine-Learning-Bereich wird er Code benutzt. Dort ist er besser bekannt unter dem Namen One-Hot-Code. Der Name soll verdeutlichen, dass es pro Code-Wort nur eine $1$ gibt (\say{es ist nur an einer Position im Code-Wort heiss}). Auch beim 1-aus-10-Code sind alle Coder-Wörter gleich lang. Es ist also auch ein \textbf{Blockcode} mit der Blockgrösse $10$ Bits.
+
+\subsection{Aufgaben}
+\label{subsection-bcd-1aus10-aufgaben}
+
+\begin{enumerate}
+\item Codieren Sie die Zahl \num{512} mit dem 1-aus-10-Code \label{enum-bcd-2}.
+\fillwithgrid{0.5in}
+\item Wie viele Bits benötigt die codierte Zahl aus Teilaufgabe \ref{enum-bcd-2}?
+\fillwithgrid{0.25in}
+\item Stellen Sie die Anzahl Bits für die Zahl \num{65536} und die Codes (Dualcode, 8-4-2-1-\ac{BCD}-Code und 1-aus-10-Code) in einer Tabelle (3 Spalten, 2 Zeilen) dar.
+\fillwithgrid{1.75in}
+\item Decodieren Sie das Code-Wort $0000000100000000000100000000100000000001$ unter der Verwendung des 1-aus-10-Codes.
+\fillwithgrid{0.25in}
+\item In \autoref{table-1-aus-10} fehlen die nicht erlaubten Code-Wörter. Wie viele nicht erlaubte Code-Wörter mit $10$ Bits gibt es? Notieren Sie den Rechenweg.
+\fillwithgrid{0.75in}
+\end{enumerate}

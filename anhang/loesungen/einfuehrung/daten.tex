@@ -1,0 +1,268 @@
+% !TEX root = ../../../main.tex
+
+\subsection{\autoref{chapter-datenmenge}, \nameref{chapter-datenmenge}}
+
+\begin{enumerate}
+\item $\qty{65536}{\bit} = \qty{8192}{\byte} = \qty{8}{\kibi\byte}$
+\item $\qty{650}{\mega\byte} = \qty{650000}{\kilo\byte} = \qty{650000000}{\byte} = \qty{5200000000}{\bit}$
+\item $\qty{4}{\giga\byte} = \qty{4000}{\mega\byte} = \qty{4000000}{\kilo\byte} = \qty{4000000000}{\byte}$
+\item $\qty{4}{\gibi\byte} = \qty{4096}{\mebi\byte} = \qty{4194304}{\kibi\byte} = \qty{4294967296}{\byte}$. Sie erhalten mehr Arbeitsspeicher als die Werbung angibt.
+\item Wir erhalten folgende Zuordnung.
+\begin{enumerate}
+\begin{multicols}{2}
+\item \qty{1}{\bit} $\Rightarrow$ ja/nein
+\item \qty{8}{\mega\byte} $\Rightarrow$ \qty{4}{\min} Musik
+\item \qty{4.5}{\giga\byte} $\Rightarrow$ \qty{94}{\min} FullHD-Film
+\item \qty{144}{\byte} $\Rightarrow$ $1$ Tweet
+\item \qty{8}{\tera\byte} $\Rightarrow$ Festplatte
+\item \qty{1.47}{\mega\byte} $\Rightarrow$ Diskette
+\item \qty{15}{\exa\byte} $\Rightarrow$ Rechenzentrum
+\item \qty{80}{\kilo\byte} $\Rightarrow$ Instagram-Foto
+\item \qty{2}{\mega\byte} $\Rightarrow$ Smartphone-Foto
+\item \qty{1}{\byte} $\Rightarrow$ $1$ Buchstabe
+\item \qty{256}{\giga\byte} $\Rightarrow$ Smartphone-Speicherplatz
+\item \qty{11}{\giga\byte} $\Rightarrow$ Windows 10
+\end{multicols}
+\end{enumerate}
+\end{enumerate}
+
+\subsection{\autoref{chapter-was-ist-ein-code}, \nameref{chapter-was-ist-ein-code}}
+
+\begin{enumerate}
+\item INFORMATIK
+\item ALICE: $\cdot~- / \cdot~-\cdot~\cdot / \cdot~\cdot / -~\cdot~-~\cdot / \cdot$
+\item Da nicht klar ist, wo die Trennung der Buchstaben vorgenommen wird, kann es zum Beispiel KSWE heissen, aber auch KEEEWE wäre möglich. Es ist ohne weitere Information nicht eindeutig decodierbar.
+\end{enumerate}
+
+\subsection{\autoref{chapter-dualcode}, \nameref{chapter-dualcode}}
+
+\subsubsection{\autoref{subsection-dualcode-aufgaben-1}, \nameref{subsection-dualcode-aufgaben-1}}
+
+\begin{enumerate}
+\item $67_{10} = 1000011_2$
+\item $1000_{10} = 1111101000_2$
+\item $333_{10} = 101001101_2$
+\end{enumerate}
+
+\subsubsection{\autoref{subsection-dualcode-aufgaben-2}, \nameref{subsection-dualcode-aufgaben-2}}
+
+\begin{enumerate}
+\item  $1111_2 = 15_{10}$
+\item $100000_2 = 32_{10}$
+\item $101101_2 = 45_{10}$
+\end{enumerate}
+
+\subsubsection{\autoref{subsection-dualcode-aufgaben-3}, \nameref{subsection-dualcode-aufgaben-3}}
+
+\begin{enumerate}
+\item $2^4 = \num{16}$ verschiedene Dualzahl; grösste Dualzahl $1111_2 = \num{15}_{10}$.
+\item $2^8 = \num{256}$ verschiedene Dualzahl; grösste Dualzahl $11111111_2 = \num{255}_{10}$.
+\item $2^{10} = \num{1024}$ verschiedene Dualzahl; grösste Dualzahl $1111111111_2 = \num{1023}_{10}$.
+\item $2^{16} = \num{65536}$ verschiedene Dualzahl; grösste Dualzahl $11111111111111_2 = \num{65535}_{10}$.
+\end{enumerate}
+
+\subsubsection{\autoref{subsection-dualcode-aufgaben-4}, \nameref{subsection-dualcode-aufgaben-4}}
+
+\begin{multicols}{2}
+\begin{enumerate}
+\item Die nächsten \num{10} Dualzahlen lauten:
+\begin{itemize}
+\item $10111100$
+\item $10111101$
+\item $10111110$
+\item $10111111$
+\item $11000000$
+\item $11000001$
+\item $11000010$
+\item $11000011$
+\item $11000100$
+\item $11000101$
+\end{itemize}
+\item Die nächsten \num{10} Dualzahlen lauten:
+\begin{itemize}
+\item $1000000$
+\item $1000001$
+\item $1000010$
+\item $1000011$
+\item $1000100$
+\item $1000101$
+\item $1000110$
+\item $1000111$
+\item $1001000$
+\item $1001001$
+\end{itemize}
+\end{enumerate}
+\end{multicols}
+
+\subsubsection{\autoref{subsection-dualcode-aufgaben-5}, \nameref{subsection-dualcode-aufgaben-5}}
+
+\begin{enumerate}
+\item Falls die letzte Binärziffer \num{0} ist, dann ist es eine gerade Zahl, sonst (dann ist es eine \num{1}) ist es eine ungerade Zahl.
+\item $\overbrace{111\dots1}^{n-\textrm{Einsen}}$~$_2 = 2^n-1_{10}$
+\end{enumerate}
+
+\subsubsection{Rechenwege zu \protect\say{Aufgaben 1}}
+
+\begin{minipage}{0.3\linewidth}
+\begin{alignat*}{6}
+67 & : & ~2 & ~=~ & 33 & ~R~ & 1 \\
+33 & : & ~2 & ~=~ & 16 & ~R~ & 0 \\
+16 & : & ~2 & ~=~ & 8 & ~R~ & 0 \\
+8 & : & ~2 & ~=~ & 4 & ~R~ & 0 \\
+4 & : & ~2 & ~=~ & 2 & ~R~ & 0 \\
+2 & : & ~2 & ~=~ & 1 & ~R~ & 0 \\
+1 & : & ~2 & ~=~ & 0 & ~R~ & 1 \\
+\end{alignat*}
+\end{minipage}
+\begin{minipage}{0.3\linewidth}
+\begin{alignat*}{6}
+1000 & : & ~2 & ~=~ & 500 & ~R~ & 0 \\
+500 & : & ~2 & ~=~ & 250 & ~R~ & 0 \\
+250 & : & ~2 & ~=~ & 125 & ~R~ & 0 \\
+125 & : & ~2 & ~=~ & 62 & ~R~ & 1 \\
+62 & : & ~2 & ~=~ & 31 & ~R~ & 0 \\
+31 & : & ~2 & ~=~ & 15 & ~R~ & 1 \\
+15 & : & ~2 & ~=~ & 7 & ~R~ & 1 \\
+7 & : & ~2 & ~=~ & 3 & ~R~ & 1 \\
+3 & : & ~2 & ~=~ & 1 & ~R~ & 1 \\
+1 & : & ~2 & ~=~ & 0 & ~R~ & 1 \\
+\end{alignat*}
+\end{minipage}
+\begin{minipage}{0.3\linewidth}
+\begin{alignat*}{6}
+333 & : & ~2 & ~=~ & 166 & ~R~ & 1 \\
+166 & : & ~2 & ~=~ & 83 & ~R~ & 0 \\
+83 & : & ~2 & ~=~ & 41 & ~R~ & 1 \\
+41 & : & ~2 & ~=~ & 20 & ~R~ & 1 \\
+20 & : & ~2 & ~=~ & 10 & ~R~ & 0 \\
+10 & : & ~2 & ~=~ & 5 & ~R~ & 0 \\
+5 & : & ~2 & ~=~ & 2 & ~R~ & 1 \\
+2 & : & ~2 & ~=~ & 1 & ~R~ & 0 \\
+1 & : & ~2 & ~=~ & 0 & ~R~ & 1 \\
+\end{alignat*}
+\end{minipage}
+
+\subsection{\autoref{chapter-bcd-codes}, \nameref{chapter-bcd-codes}}
+
+\subsubsection{\autoref{subsection-bcd-8421-aufgaben}, \nameref{subsection-bcd-8421-aufgaben}}
+
+\begin{enumerate}
+\item $01100101010100110110$
+\item Sie benötigt $4 \cdot \qty{5}{\bit} = \qty{20}{\bit}$.
+\item Man benötigt \qty{17}{\bit}. 
+\item $2001$
+\end{enumerate}
+
+\subsubsection{\autoref{subsection-bcd-1aus10-aufgaben}, \nameref{subsection-bcd-1aus10-aufgaben}}
+
+\begin{enumerate}
+\item Die Zahl \num{512} wird zu $000010000000000000100000000100$ codiert.
+\item $5 \cdot \qty{10	}{\bit} = \qty{50}{\bit}$ bzw. $3 \cdot \qty{10}{\bit} = \qty{30}{\bit}$
+\item \autoref{table-vergleich-numerische-codes} zeigt die Codes im Vergleich.
+
+\begin{table}[htb]
+\centering
+\begin{tabular}{|c|c|c|}
+\hline
+Dualcode & 8-4-2-1-BCD-Code & 1-aus-10-Code \\ \hline
+\qty{17}{\bit} & \qty{20}{\bit} & \qty{50}{\bit} \\ \hline
+\end{tabular}
+\caption{Der Dualcode benötigt am wenigsten Bits.}
+\label{table-vergleich-numerische-codes}
+\end{table}
+\item $2010$
+\item Es gibt insgesamt $2^{10} = 1024$ verschiedene Code-Wörter mit \qty{10}{\bit}. Der 1-aus-10-Code verwendet \num{10} davon. Somit gibt es $1024 - 10 = 1014$ nicht erlaubte Code-Wörter.
+\end{enumerate}
+
+\subsection{\autoref{chapter-textcodierungen}, \nameref{chapter-textcodierungen}}
+
+\subsection{\autoref{subsection-ascii-aufgaben}, \nameref{subsection-ascii-aufgaben}}
+
+\begin{enumerate}
+\item 100001011011111100010
+\item 2001: A Space Odyssey
+\item Es ist ein Blockcode mit \qty{7}{\bit} pro Code-Wort. Dadurch kann man jedes Code-Wort eindeutig decodieren.
+\item Es ist ein amerikanischer Code. Er wurde hinsichtlich einer \ac{US}-Tastatur entwickelt. Es fehlen somit zahlreiche Zeichen. Einige Beispiele: €, ß, é, â oder ç.
+\item Man codiert ein Zeichen, in dem man zuerst die drei Bits der Spalte notiert und dann die vier Bits der Zeile.
+\end{enumerate}
+
+\subsection{\autoref{subsection-unicode-aufgaben}, \nameref{subsection-unicode-aufgaben}}
+
+\begin{enumerate}
+\item Lösung zur Aufgabe mit dem Vornamen.
+\begin{enumerate}
+\item Sie finden hier alle Grossbuchstaben des lateinischen Alphabets.
+\begin{multicols}{4}
+\begin{itemize}
+\item A: U+0041
+\item B: U+0042
+\item C: U+0043
+\item D: U+0044
+\item E: U+0045
+\item F: U+0046
+\item G: U+0047
+\item H: U+0048
+\item I: U+0049
+\item J: U+004A
+\item K: U+004B
+\item L: U+004C
+\item M: U+004D
+\item N: U+004E
+\item O: U+004F
+\item P: U+0050
+\item Q: U+0051
+\item R: U+0052
+\item S: U+0053
+\item T: U+0054
+\item U: U+0055
+\item V: U+0056
+\item W: U+0057
+\item X: U+0058
+\item Y: U+0059
+\item Z: U+005A
+\end{itemize}
+\end{multicols}
+\item O mit UTF-32: 00000000000000000000000001001111
+\item O mit UTF-8: 01001111
+\end{enumerate}
+\item Code Point: U+00A9 und UTF-8: $1100001010101001_2 = C2A9_{16}$
+\item Code Point: U+20AC und UTF-8: $111000101000001010101100_2 = E282AC_{16}$
+\item Code Point: U+1F600 und UTF-8: $11110000100111111001100010000000_2 = F09F9880_{16}$
+\item Code Point: U+0057. Die letzten 7 Bits stimmen mit ASCII überein. Es ist das Zeichen W.
+\item $C384_{16} = 1100~0011~1000~~0100_2$. Dies ergibt den Code Point U+00C4. Es ist das Ä.
+\item $F09FAB95_{16} = 1111~0000~1001~1111~1010~1011~1001~0101_2$. Dies ergibt den Code Point U+1FAD5. Es ist das Fondue-Emoji.
+\item $F09F8E84_{16} = 1111~0000~1001~1111~1000~1110~1000~0100_2$. Dies ergibt den Code Point U+1F384. Es ist das Weihnachtsbaum-Emoji.
+\item Alle Code-Wörter aus \ac{ASCII} bestehen aus \qty{7}{\bit}. Nutzt man Unicode mit UTF-8, dann sind die letzten \textbf{sieben} Bits identisch. Da bei UTF-8 alle Zeichen aus \ac{ASCII} in das Muster mit \qty{8}{\bit} \say{fallen}, benötigen alle Code Points exakt \qty{8}{\bit}. Man kann ein \ac{ASCII} Code-Wort nun einfach mit einer führenden \num{0} erweitern und erhält ein gültiges UTF-8 Code-Wort. Das UTF-8 Code-Wort kann decodiert werden und man erhält das gleiche Zeichen als würde man die sieben Bits mit \ac{ASCII} decodieren.
+\item Gemäss \url{http://blog.unicode.org/2022/03/the-past-and-future-of-flag-emoji.html} werden keine neuen Flaggen mehr veröffentlicht. Bereits jetzt gibt es verhältnismässig sehr viele Flaggen. Es gibt mehr als \num{5000} Flaggen und man sieht diese Kategorie als ein \say{Fass ohne Boden} an. Man denkt, dass ein Vorschlag für eine Flagge nach der anderen folgen wird. Flaggen sind jedoch technisch komplizierter umzusetzen und werden verhältnismässig selten benutzt. Deshalb möchte man keine Vorschläge mehr akzeptieren. Unter gewissen Umständen wird automatisch eine neue Flagge hinzugefügt.
+\end{enumerate}
+
+\subsection{\autoref{chapter-hexadezimalcode}, \nameref{chapter-hexadezimalcode}}
+
+\subsubsection{\autoref{subsection-hex2dual-aufgaben}, \nameref{subsection-hex2dual-aufgaben}}
+
+\begin{enumerate}
+\item $CD_{16} = 11001101_2$
+\item $101_{16} = 000100000001_2$
+\item $1337_{16} = 0001001100110111_2$
+\item $CAFE_{16} = 1100101011111110_2$
+\item $ABBA_{16} = 1010101110111010_2$
+\item $FFFF_{16} = 1111111111111111_2$
+\item Pro Hexadezimal\textbf{ziffer} werden \qty{4}{\bit} benötigt. Deshalb benötigt eine Hexadezimalzahl mit \num{10} Ziffern \qty{40}{\bit} = \qty{5}{\byte}. Pro Byte können zwei Ziffern abgedeckt werden.
+\end{enumerate}
+
+\subsubsection{\autoref{subsection-dual2hex-aufgaben}, \nameref{subsection-dual2hex-aufgaben}}
+
+\begin{enumerate}
+\item $100001_2  = 00100001_2 = 21_{16}$
+\item $11111111_2 = 11111111_2 = FF_{16}$
+\item $1010101010_2 = 001010101010_2 = 2AA_{16}$
+\item $11110000_2 = F0_{16}$
+\end{enumerate}
+
+\subsubsection{\autoref{subsection-dez2hex-aufgaben}, \nameref{subsection-dez2hex-aufgaben}}
+
+TO DO
+
+\subsubsection{\autoref{subsection-hex2dez-aufgaben}, \nameref{subsection-hex2dez-aufgaben}}
+
+TO DO

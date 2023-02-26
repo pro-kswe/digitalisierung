@@ -1,0 +1,32 @@
+%----------------------------------------------------------------------------------------
+%	HEADERS AND FOOTERS
+%----------------------------------------------------------------------------------------
+
+\pagestyle{fancy} % Enable the custom headers and footers
+
+\renewcommand{\chaptermark}[1]{\markboth{\sffamily\normalsize\bfseries\chaptername\ \thechapter.\ #1}{}} % Styling for the current chapter in the header
+\renewcommand{\sectionmark}[1]{\markright{\sffamily\normalsize\thesection\hspace{5pt}#1}{}} % Styling for the current section in the header
+
+\fancyhf{} % Clear default headers and footers
+\fancyhead[LE,RO]{\sffamily\normalsize\thepage} % Styling for the page number in the header
+\fancyhead[LO]{\rightmark} % Print the nearest section name on the left side of odd pages
+\fancyhead[RE]{\leftmark} % Print the current chapter name on the right side of even pages
+\fancyfoot[C]{\thepage} % Uncomment to include a footer
+
+\renewcommand{\headrulewidth}{0.5pt} % Thickness of the rule under the header
+
+\fancypagestyle{plain}{% Style for when a plain pagestyle is specified
+	\renewcommand{\headrulewidth}{0pt}
+	\fancyhead{}
+	\fancyfoot[C]{\thepage}
+}
+
+% Removes the header from odd empty pages at the end of chapters
+\makeatletter
+\renewcommand{\cleardoublepage}{
+\clearpage\ifodd\c@page\else
+\hbox{}
+\vspace*{\fill}
+\thispagestyle{plain}
+\newpage
+\fi}

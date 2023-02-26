@@ -1,0 +1,201 @@
+\subsection*{\ref{subsection-aufgaben-digitaltechnik-dnf} \nameref{subsection-aufgaben-digitaltechnik-dnf}}
+
+\begin{enumerate}
+	\item $A_1 = ((\neg E_1) \wedge E_2) \vee (E_1 \wedge (\neg E_2)) \vee (E_1 \wedge E_2)$
+
+\begin{figure}[H]
+\centering
+\begin{circuitikz}
+\ctikzset{tripoles/european not symbol=ieee circle}
+\draw (-7, 0.5) node (E1) {$E_1$};
+\draw (-5.5, 0.5) node[circle, fill, inner sep=1pt] (E1C) {};
+
+\draw (-7, -0.5) node (E2) {$E_2$};
+\draw (-4.5, -0.5) node[circle, fill, inner sep=1pt] (E2C) {};
+
+\draw (-2.5, 2.5) node[european not port] (NOT1) {};
+\draw (-2.5, -0.5) node[european not port] (NOT2) {};
+
+\draw (0, 2) node[and port] (AND1) {};
+\draw (0, 0) node[and port] (AND2) {};
+\draw (0, -2) node[and port] (AND3) {};
+
+\draw (2, 0) node[or port, number inputs=3] (OR1) {};
+
+\draw (AND1.out) |- (OR1.in 1);
+\draw (AND2.out) |- (OR1.in 2);
+\draw (AND3.out) |- (OR1.in 3);
+
+\draw (NOT1.out) |- (AND1.in 1);
+\draw (NOT2.out) |- (AND2.in 2);
+
+\draw (E1.east) |- (E1C);
+\draw (E1C) |- (NOT1.in);
+\draw (E1C) |- (-5, 0.5) |- (AND2.in 1);
+\draw (E1C) |- (AND3.in 1);
+
+\draw (E2.east) |- (E2C);
+\draw (E2C) |- (NOT2.in);
+\draw (E2C) |- (AND1.in 2);
+\draw (E2C) |- (AND3.in 2);
+
+\draw (OR1.out) node[anchor=west] {$A_1$};
+\end{circuitikz}
+\end{figure}
+
+\item $A_1 = ((\neg E_1) \wedge E_2 \wedge E3) \vee (E_1 \wedge (\neg E_2) \wedge E3) \vee (E_1 \wedge E_2 \wedge (\neg E_3))$
+
+Ein \texttt{AND}-Gate oder \texttt{OR}-Gate kann auch mehr als zwei Eingänge besitzen. Damit wird das Schaltnetz kompakter.
+
+\begin{figure}[H]
+\centering
+\begin{circuitikz}
+\ctikzset{tripoles/european not symbol=ieee circle}
+\draw (-7, 1) node (E1) {$E_1$};
+\draw (-5.5, 1) node[circle, fill, inner sep=1pt] (E1C) {};
+
+\draw (-7, 0) node (E2) {$E_2$};
+\draw (-5, 0) node[circle, fill, inner sep=1pt] (E2C) {};
+
+\draw (-7, -1) node (E3) {$E_3$};
+\draw (-4.5, -1) node[circle, fill, inner sep=1pt] (E3C1) {};
+\draw (-6, -1) node[circle, fill, inner sep=1pt] (E3C2) {};
+
+\draw (-2.5, 2.75) node[european not port] (NOT1) {};
+\draw (-2.5, -0.5) node[european not port] (NOT2) {};
+\draw (-2.5, -2.75) node[european not port] (NOT3) {};
+
+\draw (0, 2) node[and port, number inputs=3] (AND1) {};
+\draw (0, 0) node[and port, number inputs=3] (AND2) {};
+\draw (0, -2) node[and port, number inputs=3] (AND3) {};
+
+\draw (2, 0) node[or port, number inputs=3] (OR1) {};
+
+\draw (AND1.out) |- (OR1.in 1);
+\draw (AND2.out) |- (OR1.in 2);
+\draw (AND3.out) |- (OR1.in 3);
+
+\draw (NOT1.out) |- (AND1.in 1);
+\draw (NOT2.out) |- (AND2.in 2);
+\draw (NOT3.out) |- (AND3.in 3);
+
+\draw (E1.east) |- (E1C);
+\draw (E1C) |- (NOT1.in);
+\draw (E1C) |- (-3, 1) |- (AND2.in 1);
+\draw (E1C) |- (AND3.in 1);
+
+\draw (E2.east) |- (E2C);
+\draw (E2C) |- (-4.25, 0) |- (NOT2.in);
+\draw (E2C) |- (AND1.in 2);
+\draw (E2C) |- (AND3.in 2);
+
+\draw (E3.east) |- (E3C1);
+
+\draw (E3C1) |- (AND1.in 3);
+\draw (E3C1) |- (-4.5, -1.25) |- (-2, -1.25) |- (AND2.in 3);
+\draw (E3C2) |- (NOT3.in);
+
+\draw (OR1.out) node[anchor=west] {$A_1$};
+\end{circuitikz}
+\end{figure}
+
+\newpage
+
+\item $A_1 = ((\neg E_1) \wedge (\neg E_2) \wedge E3) \vee (E_1 \wedge (\neg E_2) \wedge (\neg E3)) \vee (E_1 \wedge (\neg E_2) \wedge E_3) \vee (E_1 \wedge E_2 \wedge (\neg E_3)) \vee (E_1 \wedge E_2 \wedge E_3)$.
+
+\begin{figure}[H]
+\centering
+\begin{circuitikz}
+\ctikzset{tripoles/european not symbol=ieee circle}
+\draw (-7, 2.5) node (E1) {$E_1$};
+\draw (-6, 2.5) node[circle, fill, inner sep=1pt] (E1C1) {};
+\draw (-3, 1.5) node[circle, fill, inner sep=1pt] (E1C2) {};
+\draw (-3, 0.3) node[circle, fill, inner sep=1pt] (E1C3) {};
+\draw (-3, -1.7) node[circle, fill, inner sep=1pt] (E1C4) {};
+
+\draw (-7, 0) node (E2) {$E_2$};
+\draw (-6, 0) node[circle, fill, inner sep=1pt] (E2C1) {};
+\draw (-3.5, -2) node[circle, fill, inner sep=1pt] (E2C2) {};
+\draw (-2.5, 0.5) node[circle, fill, inner sep=1pt] (E2C3) {};
+\draw (-2.5, 2) node[circle, fill, inner sep=1pt] (E2C4) {};
+
+\draw (-7, -2.5) node (E3) {$E_3$};
+\draw (-6, -2.5) node[circle, fill, inner sep=1pt] (E3C1) {};
+\draw (-2, -3) node[circle, fill, inner sep=1pt] (E3C2) {};
+\draw (-2, -0.3) node[circle, fill, inner sep=1pt] (E3C3) {};
+\draw (-1.75, -0.75) node[circle, fill, inner sep=1pt] (E3C4) {};
+
+\draw (-4, 3) node[european not port] (NOT1) {};
+\draw (-4, 0.5) node[european not port] (NOT2) {};
+\draw (-4, -2) node[european not port] (NOT3) {};
+
+\draw (0, 4) node[and port, number inputs=3] (AND1) {};
+\draw (0, 2) node[and port, number inputs=3] (AND2) {};
+\draw (0, 0) node[and port, number inputs=3] (AND3) {};
+\draw (0, -2) node[and port, number inputs=3] (AND4) {};
+\draw (0, -4) node[and port, number inputs=3] (AND5) {};
+
+\draw (2, 0) node[or port, number inputs=5] (OR1) {};
+
+\draw (AND1.out) |- (OR1.in 1);
+\draw (AND2.out) |- (OR1.in 2);
+\draw (AND3.out) |- (OR1.in 3);
+\draw (AND4.out) |- (OR1.in 4);
+\draw (AND5.out) |- (OR1.in 5);
+
+\draw (NOT1.out) |- (AND1.in 1);
+\draw (NOT2.out) |- (E2C3);
+\draw (NOT3.out) |- (E3C4);
+
+\draw (E1.east) |- (E1C1);
+\draw (E1C1) |- (E1C2);
+\draw (E1C1) |- (NOT1.in);
+
+\draw (E1C2) |- (AND2.in 1);
+\draw (E1C2) |- (AND3.in 1);
+\draw (E1C2) |- (AND4.in 1);
+\draw (E1C2) |- (AND5.in 1);
+
+\draw (E2.east) |- (E2C1);
+\draw (E2C1) |- (-3.5, -1) |- (E2C2);
+\draw (E2C1) |- (NOT2.in);
+\draw (E2C3) |- (AND1.in 2);
+\draw (E2C4) |- (AND2.in 2);
+\draw (E2C3) |- (AND3.in 2);
+\draw (E2C2) |- (AND4.in 2);
+\draw (E2C2) |- (AND5.in 2);
+
+\draw (E3.east) |- (E3C1);
+\draw (E3C1) |- (NOT3.in);
+\draw (E3C1) |- (E3C2);
+\draw (E3C2) |- (AND1.in 3);
+\draw (E3C4) |- (AND2.in 3);
+\draw (E3C2) |- (AND3.in 3);
+\draw (E3C4) |- (AND4.in 3);
+\draw (E3C2) |- (AND5.in 3);
+
+\draw (OR1.out) node[anchor=west] {$A_1$};
+\end{circuitikz}
+\end{figure}
+
+\item $A_1 = (\neg E_1) \wedge (\neg E_2)$. Dieses Beispiel zeigt, dass der dritte Schritt entfällt, falls es nur eine Zeile gibt, bei der gilt $A_1 = 1$.
+
+\begin{figure}[htb]
+\centering
+\begin{circuitikz}
+\draw (-5, 1) node (E1) {$E_1$};
+\draw (-5, -1) node (E2) {$E_2$};
+
+\draw (0, 0) node[and port] (AND1) {};
+
+\draw (-3, 1) node[european not port] (NOT1) {};
+\draw (-3, -1) node[european not port] (NOT2) {};
+
+\draw (NOT1.out) |- (AND1.in 1);
+\draw (NOT2.out) |- (AND1.in 2);
+
+\draw (AND1.out) node[anchor=west] {$A_1$};
+\end{circuitikz}
+\end{figure}
+
+\end{enumerate}

@@ -1,0 +1,151 @@
+% !TEX root = ../../../main.tex
+
+\toggletrue{image}
+\toggletrue{imagehover}
+\chapterimage{kilobyte}
+\chapterimagetitle{\uppercase{Kilobyte}}
+\chapterimageurl{https://xkcd.com/394/}
+\chapterimagehover{I would take 'kibibyte' more seriously if it didn't sound so much like 'Kibbles N Bits'.}
+
+%https://cgvr.informatik.uni-bremen.de/teaching/info1_0506/folien/02_repraesentation_daten_2up_1.pdf
+%https://files.ifi.uzh.ch/ee/fileadmin/user_upload/teaching/hs12/02_FGI_Information_Text.pdf
+
+\chapter{Datenmenge}
+\label{chapter-datenmenge}
+
+Genauso wie wir das Gewicht eines Gegenstandes messen können oder das Volumen einer Flüssigkeit, so können wir auch die Grösse von Daten bestimmen - die Datenmenge. Wir schauen uns in diesem Kapitel an, wie man mit den Massen für Binärdaten umgeht. Die Lernziele lauten:
+
+\newcommand{\datenmengeLernziele}{
+\protect\begin{todolist}
+\item Sie kennen die Masseinheiten für Binärdaten.
+\item Sie wandeln die Masseinheiten für Binärdaten um.
+\item Sie unterscheiden die Masseinheiten zur Basis $10$ und zur Basis $2$.
+\item Sie ordnen die Masseinheiten für Binärdaten ein.
+\end{todolist}
+}
+
+\lernziel{\autoref{chapter-datenmenge}, \nameref{chapter-datenmenge}}{\protect\datenmengeLernziele}
+
+\datenmengeLernziele
+
+\section{Bits und Bytes}
+
+Die kleinste Dateneinheit in der Informatik ist ein Bit. Wir messen die Datenmenge von Binärdaten in Bits.
+
+\begin{definition}[Masseinheit für Binärdaten]
+Die Datenmenge von Binärdaten erhalten wir, in dem wir die Anzahl der Bits zählen. Die Einheit lautet \unit{\bit}.
+\end{definition}
+
+\begin{example}
+Die Datenmenge der Binärdaten \texttt{0011001111001110} lautet \qty{16}{\bit}. Wir erhalten die Grösse, in dem wir die Bits zählen.
+\end{example}
+
+Die Anzahl der Bits für Binärdaten können recht schnell sehr gross werden. Deshalb wird heute praktisch überall die Masseinheit Byte benutzt.
+
+\begin{definition}[Byte]
+Eine Folge von \textbf{acht Bits} bezeichnet man als ein Byte. Somit gilt:
+
+\begin{center}
+$1$ Byte = \qty{1}{\byte} = \qty{8}{\bit}
+\end{center}
+
+\end{definition}
+
+\begin{example}
+Die Datenmenge der Binärdaten \texttt{0011001111001110} lautet \qty{16}{\bit} = \qty{2}{\byte}.
+\end{example}
+
+\subsection{Übrigens...}
+
+Historisch gesehen gab es auch Computer, welche eine andere Anzahl von Bits gruppiert haben. Es gibt auch noch heute eine sehr kleine Anzahl von Systemen, bei denen ein Byte eine Folge von $7$ Bits bezeichnet. Heute verwenden jedoch praktisch alle Computer die \say{übliche $8$-er Gruppierung}. Typischerweise ist \qty{1}{\byte}die kleinste Einheit die im Speicher angelegt werden kann. Auch wenn man nur ein Bit speichern möchte, wird immer ein ganzes Byte im Speicher reserviert. 
+
+\subsubsection{Video-Material}
+
+\begin{itemize}
+\item Where did Bytes Come From? - Computerphile (\url{https://www.youtube.com/watch?v=ixJCo0cyAuA}).
+\end{itemize}
+
+\section{Noch mehr Bytes}
+\label{sec-noch-mehr-bytes}
+
+Würde wir die Datenmengen nur mithilfe von Bytes angeben, so würden Mobilfunkanbieter das Datenvolumen etwa mit \qty{1000000000}{\byte} bewerben. Aus dem Alltag kennen wir eher die Bezeichnung Kilobyte, Megabyte, Gigabyte und Terabyte. Dies macht die Angabe von Datenmengen nochmals deutlich übersichtlicher und es hat sich auch beim Kauf von elektronischen Geräten bei den Speicherangaben durchgesetzt (z.B. Speicher beim Smartphone wird typischerweise in Gigabyte angegeben). Verwenden wir diese üblichen Bezeichnungen, so ergeben sich folgende Umrechnungen:
+
+\begin{itemize}
+\item \qty{1}{Kilobyte} = \qty{1}{\kilo\byte} = \qty{e3}{\byte} = \qty{1000}{\byte}
+\item \qty{1}{Megabyte} = \qty{1}{\mega\byte} = \qty{e3}{\kilo\byte} = \qty{1000}{\kilo\byte}
+\item \qty{1}{Gigabyte} = \qty{1}{\giga\byte} = \qty{e3}{\mega\byte} = \qty{1000}{\mega\byte}
+\item \qty{1}{Terabyte} = \qty{1}{\tera\byte} = \qty{e3}{\giga\byte} = \qty{1000}{\giga\byte}
+\end{itemize}
+
+Wir kennen diese Bezeichnungen von anderen Masseinheiten (Kilogramm, Megawatt oder Gigatonnen) und können diese auf die gleiche Art und Weise verwenden.
+
+\section{Datenmengen zur Basis 2}
+
+Neben den Einheiten aus \autoref{sec-noch-mehr-bytes} sind in der Informatik noch folgende Masseinheiten üblich:
+
+\begin{itemize}
+\sisetup{exponent-base = 2}
+\item \qty{1}{Kibibyte} = \qty{1}{\kibi\byte} = \qty{e10}{\byte} = \qty{1024}{\byte}
+\item \qty{1}{Mebibyte} = \qty{1}{\mebi\byte} = \qty{e10}{\kibi\byte} = \qty{1024}{\kibi\byte}
+\item \qty{1}{Gibibyte} = \qty{1}{\gibi\byte} = \qty{e10}{\mebi\byte} = \qty{1024}{\mebi\byte}
+\item \qty{1}{Tebibyte} = \qty{1}{\tebi\byte} = \qty{e10}{\gibi\byte} = \qty{1024}{\gibi\byte}
+\sisetup{exponent-base = 10}
+\end{itemize}
+
+Der Grund für diese Masseinheiten liegt an der Funktionsweise des Arbeitsspeichers (auch \ac{RAM}) genannt. Der Arbeitsspeicher ist so konstruiert, dass die maximale Datenmenge immer eine $2$-er Potenz ist. Deshalb werden die Masseinheiten zur Basis $2$ gebildet. Man verwendet bei den Einheitenbezeichnungen deshalb die Silbe \say{bi} für binär, als Anlehnung an die Basis der Potenzen. Die Masseinheiten aus \autoref{sec-noch-mehr-bytes} folgen dem internationalen Einheitensystem (\ac{SI}) und werden deshalb auch \ac{SI}-Einheiten genannt. Sie verwenden die Basis $10$.
+
+\begin{important}
+Unter Informatikern ist es üblich von Kilobyte, Megabyte, Gigabyte und Terabyte zu sprechen, aber die Umrechnungen gemäss Kibibyte, Mebibyte, Gibibyte und Tebibyte anzuwenden. Die \say{korrekte} Bezeichnung für die Umwandlung mit $2^{10}$ hat sich in der Umgangssprache kaum durchgesetzt. Es kann deshalb oft zu Verwirrungen kommen, was nun gemeint ist.
+\end{important}
+
+\section{Speicherbedarf und Speicherkapazität}
+
+Wir unterscheiden die Begriffe wie folgt:
+
+\begin{itemize}
+\item Speicherkapazität: Wie lautet die maximale Datenmenge für einen Datenspeicher (z.B. Festplatte)?
+\item Speicherbedarf: Welche Datenmenge nimmt ein Objekt ein (z.B eine Bilddatei)?
+\end{itemize}
+
+\newpage
+
+\section{Aufgaben}
+\begin{enumerate}
+\item Es sind Binärdaten mit einer Datenmenge von \qty{65536}{\bit} gegeben. Geben Sie die Grösse in Bytes und \unit{\kibi\byte} an.
+\fillwithgrid{1in}
+\item Eine Standard-CD hat eine Grösse von  \qty{650}{\mega\byte}. Wie viele Bytes haben darauf Platz? Wie viele Bits?
+\fillwithgrid{1in}
+\item Ein Unternehmen verkauft Notebooks mit verschiedenen Arbeitsspeichergrössen. Das Notebook wird mit  \qty{4}{\giga\byte} beworben. Wie viele Bytes erhalten Sie?
+\fillwithgrid{1.25in}
+\item Bob erzählt Ihnen, dass der Arbeitsspeicher des Notebooks eigentlich immer eine $2$-er Potenz ist. Wenn Sie laut Hersteller also ein Notebook mit \qty{4}{\giga\byte} kaufen, dann sind es eigentlich \qty{4}{GiB}. Wie viele Bytes erhalten Sie also? Vergleichen Sie die Anzahl mit der vorherigen Aufgabe. Was fällt auf?
+\fillwithgrid{1.5in}
+\item Welche Datenmenge wird benötigt, um folgende Informationen zu speichern? Ordnen Sie die Informationen den passenden Datenmengen zu.
+\begin{multicols}{3}
+\begin{todolist}
+\item \qty{1}{\bit}
+\item \qty{8}{\mega\byte}
+\item \qty{4.5}{\giga\byte}
+\item \qty{144}{\byte}
+\item \qty{8}{\tera\byte}
+\item \qty{1.47}{\mega\byte}
+\item \qty{15}{\exa\byte}
+\item \qty{80}{\kilo\byte}
+\item \qty{2}{\mega\byte}
+\item \qty{1}{\byte}
+\item \qty{256}{\giga\byte}
+\item \qty{11}{\giga\byte}
+\item \qty{4}{\min} Musik
+\item Instagram-Foto
+\item $1$ Buchstabe
+\item \qty{94}{\min} FullHD-Film
+\item Smartphone-Speicherplatz
+\item Smartphone-Foto
+\item Festplatte
+\item ja/nein
+\item $1$ Tweet
+\item Diskette
+\item Windows 10
+\item Rechenzentrum
+\end{todolist}
+\end{multicols}
+\end{enumerate}

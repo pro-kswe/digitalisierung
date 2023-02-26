@@ -1,0 +1,289 @@
+\toggletrue{image}
+\toggletrue{imagehover}
+\chapterimage{1_to_10}
+\chapterimagetitle{1 TO 10}
+\chapterimageurl{https://xkcd.com/953/}
+\chapterimagehover{If you get an 11/100 on a CS test, but you claim it should be counted as a \say{C}, they'll probably decide you deserve the upgrade.}
+
+\chapter{Dualcode}
+\label{chapter-dualcode}
+
+In diesem Kapitel geht es darum, wie man eine natürliche Dezimalzahl, also zum Beispiel $42$, durch Binärziffern darstellt. Wir möchten hier Dezimalzahlen \textbf{nicht} mit einer Code-Tabelle codieren, sondern mithilfe eines \say{Kochrezeptes} umrechnen. Dies liegt unter anderem daran, dass es unendlich viele natürliche Dezimalzahlen gibt und wir keine unendlich grosse Code-Tabelle erstellen können. Der Dualcode ist quasi der Standard für das Codieren von natürlichen Dezimalzahlen. Die Lernziele für dieses Kapitel lauten:
+
+\newcommand{\dualcodeLernziele}{
+\protect\begin{todolist}
+\item Sie wandeln eine gegebene Dezimalzahl in die entsprechende Dualzahl um.
+\item Sie wandeln eine gegebene Dualzahl in die entsprechende Dezimalzahl um.
+\item Sie zählen mithilfe von Dualzahlen ohne zu \say{rechnen}.
+\item Sie erklären an einem Beispiel, wie der Dualcode aufgebaut ist.
+\end{todolist}
+}
+
+\lernziel{\autoref{chapter-dualcode}, \nameref{chapter-dualcode}}{\protect\dualcodeLernziele}
+
+\dualcodeLernziele
+
+\begin{definition}[Dualzahlen]
+Die Code-Wörter, die durch die Anwendung des Dualcodes entstehen, werden Dualzahlen genannt. Die Dualzahlen sind Binärdaten, das heisst, sie bestehen nur aus Bits (aus den Binärziffern $0$ und $1$).
+\end{definition}
+
+\section{Codieren: Dezimalzahl $\Rightarrow$ Dualzahl}
+
+Wir schauen uns zunächst an, wie man systematisch eine beliebige, natürliche Dezimalzahl in eine Dualzahl umwandeln kann.
+
+\begin{example}
+Wir wandeln die Zahl $93_{10}$ in eine Dualzahl um.
+
+\begin{minipage}[c][4cm]{0.3\linewidth}
+\begin{alignat*}{6}
+93 & : & ~2 & ~=~ & 46 & ~R~ & 1 \tikzmark{firstDigit} \\
+46 & : & ~2 & ~=~ & 23 & ~R~ & 0 \\
+23 & : & ~2 & ~=~ & 11 & ~R~ & 1 \\
+11 & : & ~2 & ~=~ & 5 & ~R~ & 1 \\
+5 & : & ~2 & ~=~ & 2 & ~R~ & 1 \\
+2 & : & ~2 & ~=~ & 1 & ~R~ & 0 \\
+1 & : & ~2 & ~=~ & 0 & ~R~ & 1 \tikzmark{lastDigit} \\
+\end{alignat*}
+\end{minipage}
+\hfill
+\begin{minipage}[c][4cm]{0.6\linewidth}
+\textbf{Rechenweg:}
+\begin{enumerate}
+\item Dividieren mit Rest: Dezimalzahl durch 2 teilen und den Rest notieren.
+\item Wiederhole die Division mit dem Ergebnis, solange bis das Ergebnis $0$ ist.
+\item Lies das Ergebnis ab. Die Binärziffern für die Dualzahl sind die Reste von unten nach oben gelesen.
+\end{enumerate}
+\end{minipage}
+
+\tikz[remember picture] \draw[overlay, ->] ([xshift = 0.5cm]pic cs:lastDigit) -- ([xshift = 0.5cm]pic cs:firstDigit);
+
+Wir erhalten die Dualzahl in dem wir die \say{Reste} (Binärziffern) von \say{unten} nach \say{oben} notieren. Im Beispiel ist dies $1011101_2 = 93_{10}$.
+
+\end{example}
+
+\subsection{Was bedeuten die kleinen Zahlen?}
+
+Damit man weiss, wie eine Zahl zu \say{lesen} ist, notieren wir hinter der Zahl ein Subskript\footnote{tiefgestelltes Druckzeichen}. Für Dezimalzahlen verwenden wir das Subskript $_{10}$. Für Dualzahlen $_2$. Manchmal ist aus dem Kontext auch klar, ob es sich um eine Dezimalzahl oder eine Dualzahl handelt. Es kann jedoch auch nicht immer eindeutig sein. Die Zahl $10$ kann sowohl eine Dezimalzahl, als auch eine Dualzahl sein. Deshalb notieren wir das Subskript, sprich $10_2$, wenn es eine Dualzahl sein soll und $10_{10}$, wenn es eine Dezimalzahl sein soll. Alternative Notationen zur Unterscheidung der Zahlen sind:
+
+\begin{itemize}
+	\item $[100000000000]_2$
+	\item $100000000000_{(2)}$
+	\item $0\text{b}100000000000$ (z.B. in der Programmiersprache Python)
+\end{itemize}
+
+\begin{example}
+$19_{10} = \underbrace{1001\overbrace{1}^{\textrm{Bit}}}_{\textrm{Dualzahl}}$$~_2$ \\ \\ Die Dualzahl hat fünf Stellen. Man sagt auch $5$-Bit-Zahl oder eine Zahl mit fünf Bits.
+\end{example}
+
+\section{Decodieren: Dualzahl $\Rightarrow$ Dezimalzahl}
+
+Nun geht es darum, wie man systematisch eine Dualzahl in eine Dezimalzahl umwandelt. Das Vorgehen lautet wie folgt: Notiere unter die Bits die $2$-er Potenzen. Beginne mit dem Bit ganz rechts und notiere darunter die Zahl $1$. Verdopple pro Bit die Zahl. Addiere nur diejenigen $2$-er Potenzen, welche unterhalb einer $1$ stehen.
+
+\begin{example}
+Wir wandeln die Zahl $1011101_{2}$ in eine Dezimalzahl um.
+
+\begin{table}[htb]
+\centering
+\begin{tabular}{|r|r|r|r|r|r|r|}
+\hline
+1  & 0  & 1  & 1 & 1 & 0 & 1 \\ \hline
+64 & 32 & 16 & 8 & 4 & 2 & 1 \\ \hline\hline
+64 & 0  & 16 & 8 & 4 & 0 & 1 \\ \hline
+\end{tabular}
+\end{table}
+
+$\Rightarrow 64 + 16 + 8 + 4 + 1 = 93_{10} = 1011101_{2}$
+
+\end{example}
+
+\section{Formeln im Umgang mit dem Dualcode}
+
+Handelt es sich bei der Dezimalzahl um eine $2$-er Potenz, dann kann man schneller codieren:
+
+\begin{center}
+$(2^k)_{10}=1\overbrace{0\dots0}^{k~\textrm{Nullen}}$$_2$
+\end{center}
+
+\begin{example}
+
+Wir möchten die Dezimalzahl $64$ codieren. Wir erhalten: $64_{10} = 2^6_{10} = 1000000_2$.
+
+\end{example}
+
+Typischerweise interessiert man sich dafür, wie viele \textbf{verschiedene} Dualzahlen man mit einer gewissen Anzahl von Bits darstellen kann. Dies kann man wie folgt berechnen: Bei $n$ Bits kann man $2^n$ verschiedene Dualzahlen erzeugen. Die kleinste Dualzahl lautet $0_2$ und die grösste Dualzahl lautet $\underbrace{1\dots1}_{n~\textrm{Einsen}}$$_2$.
+
+\begin{example}
+
+Wie viele (verschiedene) Dualzahlen kann man mit $4$ Bits darstellen? Man rechnet zunächst die Anzahl der Dualzahlen aus: $2^4 = 16$. Dann bestimmt man die kleinste ($0_2 = 0_{10}$) und grösste Dualzahl ($1111_2 = 15_{10}$).
+
+\end{example}
+
+\section{Wie man mit Dualzahlen zählt}
+
+\autoref{table-counting-numbers} zeigt die ersten $32$ natürlichen Dezimalzahlen. Daneben steht jeweils die passende Dualzahl. Man erkennt bei den Dualzahlen ein Muster. Besteht eine Dualzahl aus lauter Einsen, dann besitzt die darauffolgende Dualzahl eine Stelle mehr und besteht aus nur einer Eins und sonst Nullen. Ausserdem wechseln sich die Bits an der ersten Stelle (ganz rechts) immer ab (erst $0$ dann $1$, dann wieder $0$ und dann wieder $1$ $\dots$). Beim Zählen mit den Dualzahlen werden systematisch alle Kombinationen von Einsen und Nullen aufgelistet.
+
+\begin{table}[htb]
+\centering
+\begin{tabular}{rrc||rrc}
+\toprule
+\small{\textbf{Dezimalzahl}} &  \small{\textbf{Dualzahl}} & \small{\textbf{Kommentar}} &  \small{\textbf{Dezimalzahl}} &  \small{\textbf{Dualzahl}} &  \small{\textbf{Kommentar}} \\
+\midrule
+0 & 0 & - & 16 & 10000 & $2^4$ \\
+1 & 1 & - & 17 & 10001 & - \\
+2 & 10 & - & 18 & 10010 & - \\
+3 & 11 & $2^2-1$ & 19 & 10011 & - \\
+4 & 100 & $2^2$ & 20 & 10100 & - \\
+5 & 101 & - & 21 & 10101 & - \\
+6 & 110 & - & 22 & 10110 & - \\
+7 & 111 & $2^3-1$ & 23 & 10111 & - \\
+8 & 1000 & $2^3$ & 24 & 11000 & - \\
+9 & 1001 & - & 25 & 11001 & - \\
+10 & 1010 & - & 26 & 11010 & - \\
+11 & 1011 & - & 27 & 11011 & - \\
+12 & 1100 & - & 28 & 11100 & - \\
+13 & 1101 & - & 29 & 11101 & - \\
+14 & 1110 & - & 30 & 11110 & - \\
+15 & 1111 & $2^4-1$ & 31 & 11111 & $2^5-1$ \\
+\bottomrule
+\end{tabular}
+\caption{Die ersten $32$ Dezimalzahlen als Dualzahlen dargestellt.}
+\label{table-counting-numbers}
+\end{table}
+
+Die Dualzahlen benötigen mehr Stellen, um die entsprechende Dezimalzahl darzustellen (mit der Ausnahme von $0$ und $1$). Dies liegt daran, dass im Dualcode nur zwei Zeichen zur Verfügung stehen, bei Dezimalzahlen jedoch zehn.
+
+\section{Wie ist der Dualcode aufgebaut?}
+
+Der Dualcode ist eigentlich nichts anderes, wie eine mathematische Umrechnung. Dabei wird eine Zahl aus dem Dezimalsystem (Dezimalzahl) einfach in die entsprechende Zahl aus dem Dualsystem (Dualzahl) überführt. In diesem Abschnitt schauen wir uns den Aufbau des Dualsystems an, welches die Grundlage für den Dualcode darstellt. Dualzahlen und Dezimalzahlen besitzen den gleichen Aufbau. Es lohnt sich vorher nochmals den auf der Dezimalzahlen zu studieren (siehe \autoref{chapter-dezimalsystem}).
+
+\begin{example}
+
+Wir analysieren die Zahl $31$.
+
+\begin{minipage}{0.6\textwidth}
+\begin{alignat*}{16}
+31 & ~ = ~ & & & 16 & ~ + ~ & & & 8 & ~ + ~ & & & 4 & ~ + ~ & & & 2 & ~ + ~ & & & 1 \\
+& ~ = ~ & 1 & ~\cdot~ & 16 & ~ + ~ & 1 & ~\cdot~ & 8 & ~ + ~ & 1 & ~\cdot~ & 4 & ~ + ~ & 1 & ~\cdot~ & 2 & ~ + ~ & 1 & ~\cdot~ & 1 \\
+& ~ = ~ & 1 & ~\cdot~ & 2 \cdot 2 \cdot 2 \cdot 2  & ~ + ~ & 1 & ~\cdot~ & 2 \cdot 2 \cdot 2  & ~ + ~ & 1 & ~\cdot~ & 2 \cdot 2 & ~ + ~ & 1 & ~\cdot~ & 2 & ~ + ~ & 1 & ~\cdot~ & 1 \\
+& ~ = ~ & 1 & ~\cdot~ & \underset{\Uparrow}{2}^4  & ~ + ~ & 1 & ~\cdot~ & \underset{\Uparrow}{2}^3  & ~ + ~ & 1 & ~\cdot~ & \underset{\Uparrow}{2}^2 & ~ + ~ & 1 & ~\cdot~ & \underset{\Uparrow}{2}^1 & ~ + ~ & 1 & ~\cdot~ & \underset{\Uparrow}{2}^0 \\
+\omit\rlap{\framebox[9cm]{Basis: $2$ $\Rightarrow$ \textbf{Dual}system\footnotemark}}
+\end{alignat*}
+\end{minipage}
+\hfill
+\begin{minipage}{0.35\textwidth}
+\begin{alignat*}{6}
+2^0 & ~ = ~ & 1 & ~~~~ 	2^6 & ~ = ~ & 64  \\
+2^1 & ~ = ~ & 2	 & ~~~~	2^7 & ~ = ~ & 128  \\
+2^2 & ~ = ~ & 4	 & ~~~~	2^8 & ~ = ~ & 256  \\
+2^3 & ~ = ~ & 8	 & ~~~~	2^9 & ~ = ~ & 512  \\
+2^4 & ~ = ~ & 16 &~~~~ 	2^{10} & ~ = ~ & 1024  \\
+2^5 & ~ = ~ & 32 &~~~~ 	2^{11} & ~ = ~ & 2048  \\
+\end{alignat*}
+\end{minipage}
+Wir können die Zahl $31$ durch Potenzen der Basis $2$ darstellen. Jede Potenz wird mit der Ziffer $1$ multipliziert. Wenn wir nun nur die ersten Faktoren der Multiplikation notieren, dann erhalten wir $11111$. Dies ist eine Zahl aus dem Dualsystem. Es ist die gleiche Zahl, die wir erhalten würden, wenn wir das Kochrezept zum Umwandeln anwenden würden.
+
+\end{example}
+
+\footnotetext{Auch Zweiersystem genannt.}
+
+Auch die Position einer Ziffer im Dualsystem ist wichtig. Jede Stelle hat einen Stellenwert. Die Stelle mit dem niedrigsten Stellenwert steht ganz \textbf{rechts}. Die erste Stelle (ganz rechts) hat den Wert $1$. Die zweite Stelle hat den Wert $2$. Die dritte Stelle hat den Wert $4$, die vierte Stelle hat den Wert $8$ und die fünfte Stelle hat den Wert $16$. Es sind gerade die $2$-er Potenzen: $2^0$, $2^1$, $2^2$, $2^3$ und $2^4$.
+
+\begin{example}
+
+\begin{alignat*}{16}
+42 & ~ = ~ & & & 32 & ~ + ~ & & & & & & & 8 & ~ + ~ & & & & & & & 2 &\\
+& ~ = ~ & 1 & ~\cdot~ & 32 & ~ + ~ & 0 & ~\cdot~ & 16 & ~ + ~ & 1 & ~\cdot~ & 8 & ~ + ~ & 0 & ~\cdot~ & 4 & ~ + ~ & 1 & ~\cdot~ & 2 & ~ + ~ & 0 & ~\cdot~ & 1 \\
+& ~ = ~ & \underset{\Uparrow}{1} & ~\cdot~ & 2^5  & ~ + ~ & \underset{\Uparrow}{0} & ~\cdot~ & 2^4  & ~ + ~ & \underset{\Uparrow}{1} & ~\cdot~ & 2^3 & ~ + ~ & \underset{\Uparrow}{0} & ~\cdot~ & 2^2 & ~ + ~ & \underset{\Uparrow}{1} & ~\cdot~ & 2^1 & ~ + ~ & \underset{\Uparrow}{0} & ~\cdot~ & 2^0 \\
+\omit\rlap{\framebox[10cm]{Ziffern des Dualsystems: $0$ und $1$}}
+\end{alignat*}
+
+Im Dualsystem gibt es nur die Ziffern $0$ und $1$. Wir können die Dezimalzahl $42$ also auch durch die Duahlzahl $101010$ darstellen. Wir schreiben $42_{10} = 101010_2$.
+
+\end{example}
+
+Wir können eine natürliche Dezimalzahl auch durch eine Zerlegung der Dezimalzahl in eine Summe von $2$-er Potenzen in eine Dualzahl umwandeln. Dazu muss man jedoch sattelfest bei den $2$-er Potenzen sein und die grösste $2$-er Potenz finden, welche gerade noch in die Dezimalzahl \say{passt}. Dies ist nicht immer ganz einfach. Insbesondere bei grösseren Zahlen.
+
+\begin{example}
+
+\begin{align*}
+2048 & ~ = ~ & 1 & ~\cdot~ & 2048  & ~ + ~ & 0 & ~\cdot~ & 1024 & ~ + ~ & 0 & ~\cdot~ & 512 & ~ + ~ & 0 & ~\cdot~ & 256 & ~ + ~ & 0 & ~\cdot~ & 128 \\ 
+& ~ + ~ & 0 & ~\cdot~ & 64 & ~ + ~ & 0 & ~\cdot~ & 32 & ~ + ~ & 0 & ~\cdot~ & 16 & ~ + ~ & 0 & ~\cdot~ & 8 & ~ + ~ & 0 & ~\cdot~ & 4 \\
+& ~ + ~ & 0 & ~\cdot~ & 2 & ~ + ~ & 0 & ~\cdot~ & 1  \\
+& ~ = ~ & 1 & ~\cdot~ & 2^{11}  & ~ + ~ & 0 & ~\cdot~ & 2^{10}  & ~ + ~ & 0 & ~\cdot~ & 2^9 & ~ + ~ & 0 & ~\cdot~ & 2^8 & ~ + ~ & 0 & ~\cdot~ & 2^7 \\ 
+& ~ + ~ & 0 & ~\cdot~ & 2^6 & ~ + ~ & 0 & ~\cdot~ & 2^5 & ~ + ~ & 0 & ~\cdot~ & 2^4 & ~ + ~ & 0 & ~\cdot~ & 2^3 & ~ + ~ & 0 & ~\cdot~ & 2^2 \\ 
+& ~ + ~ & 0 & ~\cdot~ & 2^1 & ~ + ~ & 0 & ~\cdot~ & 2^0  \\
+\end{align*}
+
+Wir erhalten $2048_{10} = 100000000000_2$.
+
+\end{example}
+
+\newpage
+
+\section{Aufgaben}
+
+Lösen Sie die Aufgaben schriftlich direkt hier auf dem Papier.
+
+\subsection{Aufgaben 1}
+\label{subsection-dualcode-aufgaben-1}
+
+Wandeln Sie die folgenden Dezimalzahlen in die entsprechenden Dualzahlen um. Stellen Sie die Rechenschritte sauber dar.
+
+\begin{enumerate}
+\item $67_{10}$
+\fillwithgrid{2.5in}
+\item $1000_{10}$
+\fillwithgrid{2.5in}
+\item $333_{10}$
+\fillwithgrid{2.5in}
+\end{enumerate}
+
+\subsection{Aufgaben 2}
+\label{subsection-dualcode-aufgaben-2}
+
+Wandeln Sie die folgenden Dualzahlen in die entsprechenden Dezimalzahlen um. Stellen Sie die Rechenschritte sauber dar.
+
+\begin{enumerate}
+\item $1111_2$
+\fillwithgrid{1.5in}
+\item $100000_2$
+\fillwithgrid{1.5in}
+\item $101101_2$
+\fillwithgrid{1.5in}
+\end{enumerate}
+
+\subsection{Aufgaben 3}
+\label{subsection-dualcode-aufgaben-3}
+
+Wie viele Dualzahlen können mit der folgenden Anzahl Bits dargestellt werden? Geben Sie jeweils die grösste Dualzahl und die entsprechende Dezimalzahl an.
+
+\begin{enumerate}
+\item $4$ Bits
+\fillwithgrid{0.75in}
+\item $8$ Bits
+\fillwithgrid{0.75in}
+\item $10$ Bits
+\fillwithgrid{0.75in}
+\item $16$ Bits
+\fillwithgrid{0.75in}
+\end{enumerate}
+
+\subsection{Aufgaben 4}
+\label{subsection-dualcode-aufgaben-4}
+
+\begin{enumerate}
+\item Die Dualzahl $10111011$ ist gegeben. Listen Sie die nächsten $10$ Dualzahlen auf.
+\fillwithgrid{1.5in}
+\item Die Dualzahl $111111$ ist gegeben. Listen Sie die nächsten $10$ Dualzahlen auf.
+\fillwithgrid{1.5in}
+\end{enumerate}
+
+\subsection{Aufgaben 5}
+\label{subsection-dualcode-aufgaben-5}
+
+\begin{enumerate}
+\item Wie können Sie bei einer Dualzahl einfach feststellen, ob es sich um eine gerade/ungerade Zahl im Dezimalsystem handelt?
+\fillwithgrid{0.75in}
+\item Geben Sie eine Formel an, wie man für eine Dualzahl mit $n$ Einsen ($\overbrace{111\dots1}^{n-\textrm{Einsen}}$~$_2$) die entsprechende Dezimalzahl berechnen kann. Die Formel soll möglichst kompakt sein.
+\fillwithgrid{1.5in}
+\end{enumerate}

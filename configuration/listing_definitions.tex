@@ -1,0 +1,89 @@
+\lstset{literate=%
+  {Ö}{{\"O}}1
+  {Ä}{{\"A}}1
+  {Ü}{{\"U}}1
+  {ß}{{\ss}}1
+  {ü}{{\"u}}1
+  {ä}{{\"a}}1
+  {ö}{{\"o}}1
+}
+
+\lstset{
+language=Python,
+numbers=left,
+showstringspaces=off,
+commentstyle=\color{commentcolor},
+captionpos=b,
+frameround=tttt,
+frame=single,
+framexleftmargin=6mm,
+numberstyle=\tiny,
+keywordstyle=\color{keywordcolor}\ttfamily\bfseries,
+xleftmargin=0.75cm,
+basicstyle=\ttfamily,
+stringstyle=\color{textcolor},
+escapeinside={<@}{@>},
+morekeywords={True, False, as}
+literate=%
+  {Ö}{{\"O}}1
+  {Ä}{{\"A}}1
+  {Ü}{{\"U}}1
+  {ß}{{\ss}}1
+  {ü}{{\"u}}1
+  {ä}{{\"a}}1
+  {ö}{{\"o}}1
+  {0}{{{\color{red}0}}}1
+    {0}{{{\color{numbercolor}0}}}1
+    {1}{{{\color{numbercolor}1}}}1
+    {2}{{{\color{numbercolor}2}}}1
+    {3}{{{\color{numbercolor}3}}}1
+    {4}{{{\color{numbercolor}4}}}1
+    {5}{{{\color{numbercolor}5}}}1
+    {6}{{{\color{numbercolor}6}}}1
+    {7}{{{\color{numbercolor}7}}}1
+    {8}{{{\color{numbercolor}8}}}1
+    {9}{{{\color{numbercolor}9}}}1
+}
+
+\lstdefinelanguage{CSS}
+{morekeywords={color,background,margin,padding,font,weight,display,position,top,left,right,bottom,list,style,border,size,white,space,min,width,-,text,decoration,line,align},
+sensitive=false,
+morecomment=[l]{//},
+morecomment=[s]{/*}{*/},
+morestring=[b]",
+}
+
+\lstdefinelanguage{output} {
+numbers=left,
+captionpos=b,
+frameround=tttt,
+frame=single,
+framexleftmargin=6mm,
+numberstyle=\tiny,
+keywordstyle=\ttfamily\bfseries,
+xleftmargin=0.75cm,
+basicstyle=\ttfamily
+}
+
+\lstdefinelanguage{pseudocode} {
+mathescape=true,
+numbers=left,
+captionpos=b,
+frameround=tttt,
+frame=single,
+framexleftmargin=6mm,
+numberstyle=\tiny,
+keywordstyle=\ttfamily\bfseries,
+xleftmargin=0.75cm,
+escapeinside={<@}{@>},
+basicstyle=\ttfamily,
+keywords={input, output, return, function, if, else, then, foreach, while, begin, end, for, repeat, stop},
+literate=%
+  {Ö}{{\"O}}1
+  {Ä}{{\"A}}1
+  {Ü}{{\"U}}1
+  {ß}{{\ss}}1
+  {ü}{{\"u}}1
+  {ä}{{\"a}}1
+  {ö}{{\"o}}1
+}

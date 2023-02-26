@@ -1,0 +1,55 @@
+%----------------------------------------------------------------------------------------
+%	MAIN TABLE OF CONTENTS
+%----------------------------------------------------------------------------------------
+
+\setcounter{tocdepth}{1}
+
+\contentsmargin{0cm} % Removes the default margin
+
+% Part text styling (this is mostly taken care of in the PART HEADINGS section of this file)
+\titlecontents{part}
+	[0cm] % Left indentation
+	{\addvspace{20pt}\bfseries} % Spacing and font options for parts
+	{}
+	{}
+	{}
+
+% Chapter text styling
+\titlecontents{chapter}
+	[1.25cm] % Left indentation
+	{\addvspace{12pt}\large\sffamily\bfseries} % Spacing and font options for chapters
+	{\color{ocre!60}\contentslabel[\Large\thecontentslabel]{1.25cm}\color{ocre}} % Formatting of numbered sections of this type
+	{\color{ocre}} % Formatting of numberless sections of this type
+	{\color{ocre!60}\normalsize\;\titlerule*[.5pc]{.}\;\thecontentspage} % Formatting of the filler to the right of the heading and the page number
+
+% Section text styling
+\titlecontents{section}
+	[1.25cm] % Left indentation
+	{\addvspace{3pt}\sffamily\bfseries} % Spacing and font options for sections
+	{\contentslabel[\thecontentslabel]{1.25cm}} % Formatting of numbered sections of this type
+	{} % Formatting of numberless sections of this type
+	{\hfill\color{black}\thecontentspage} % Formatting of the filler to the right of the heading and the page number
+
+% Subsection text styling
+\titlecontents{subsection}
+	[1.25cm] % Left indentation
+	{\addvspace{1pt}\sffamily\small} % Spacing and font options for subsections
+	{\contentslabel[\thecontentslabel]{1.25cm}} % Formatting of numbered sections of this type
+	{} % Formatting of numberless sections of this type
+	{\ \titlerule*[.5pc]{.}\;\thecontentspage} % Formatting of the filler to the right of the heading and the page number
+
+% Figure text styling
+\titlecontents{figure}
+	[1.25cm] % Left indentation
+	{\addvspace{1pt}\sffamily\small} % Spacing and font options for figures
+	{\thecontentslabel\hspace*{1em}} % Formatting of numbered sections of this type
+	{} % Formatting of numberless sections of this type
+	{\ \titlerule*[.5pc]{.}\;\thecontentspage} % Formatting of the filler to the right of the heading and the page number
+
+% Table text styling
+\titlecontents{table}
+	[1.25cm] % Left indentation
+	{\addvspace{1pt}\sffamily\small} % Spacing and font options for tables
+	{\thecontentslabel\hspace*{1em}} % Formatting of numbered sections of this type
+	{} % Formatting of numberless sections of this type
+	{\ \titlerule*[.5pc]{.}\;\thecontentspage} % Formatting of the filler to the right of the heading and the page number

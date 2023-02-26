@@ -1,0 +1,258 @@
+\section{Lösungsvorschlag: \autoref{chapter-digitaltechnik}, \nameref{chapter-digitaltechnik}}
+
+\subsection*{\ref{subsection-aufgaben-digitaltechnik-schaltnetze} \nameref{subsection-aufgaben-digitaltechnik-schaltnetze}}
+
+\begin{enumerate}
+	\item $A_1 = E_1 \vee \neg E_2 \Rightarrow A_1 = (E_1 \vee (\neg E_2))$
+
+\begin{figure}[htb]
+\centering
+\begin{minipage}{0.45\textwidth}
+\centering
+\begin{circuitikz}
+\draw (0,0) node[buffer port] (A) {}
+(A.in 1) node[anchor=east] {$E_2$}; 
+\node at (A.bout) [ocirc, right]{};
+\draw (A.out) -- ++(0.5,0) node[or port, anchor=in 2] (B) {};
+\draw (A.in 1) ++ (0, 1) node[anchor=east] {$E_1$} -- (0.5,1) |- (B.in 1);
+\draw (B.out) node[anchor=west] {$A_1$};
+\end{circuitikz}
+\caption{Schaltnetz}
+\label{figure-digitaltechnik-aufgabe1-schaltnetz}
+\end{minipage}
+\hfill
+\begin{minipage}{0.45\textwidth}
+\centering
+\begin{tabular}{|c|c||c|}
+\hline
+$E_1$ 	& 	$E_2$ 	& 	$A_1 = (E_1 \vee (\neg E_2))$ 	\\ \hline
+$0$		&  	$0$     	& 	$1$    					\\ \hline
+$0$		& 	$1$     	& 	$0$   					\\ \hline
+$1$ 	& 	$0$      	& 	$1$   					\\ \hline
+$1$		& 	$1$     	& 	$1$     					\\ \hline
+\end{tabular}
+\caption{Wahrheitstabelle}
+\label{table-digitaltechnik-aufgabe1-ttt}
+\end{minipage}
+\end{figure}
+
+\item $A_1 = \neg (E_1 \wedge E_2) \Rightarrow A_1 = (\neg (E_1 \wedge E_2))$
+
+\begin{figure}[htb]
+\centering
+\begin{minipage}{0.45\textwidth}
+\centering
+\begin{circuitikz}
+\draw node[and port] (A) {} 
+(A.in 1) node[anchor=east] {$E_1$}
+(A.in 2) node[anchor=east] {$E_2$}
+(A.out) node[buffer port, anchor=west] (B) {}
+(B.in 1) node[anchor=east] {}; 
+\node at (B.bout) [ocirc, right]{};
+\draw (B.out) node[anchor=west] {$A_1$};
+\end{circuitikz}
+\caption*{Schaltnetz}
+\label{figure-digitaltechnik-aufgabe2-schaltnetz}
+\end{minipage}
+\hfill
+\begin{minipage}{0.45\textwidth}
+\centering
+\begin{tabular}{|c|c||c|}
+\hline
+$E_1$ 	& 	$E_2$ 	& 	$A_1 = (\neg (E_1 \wedge E_2))$ 	\\ \hline
+$0$		&  	$0$     	& 	$1$    						\\ \hline
+$0$		& 	$1$     	& 	$1$   						\\ \hline
+$1$ 		& 	$0$      	& 	$1$   						\\ \hline
+$1$		& 	$1$     	& 	$0$     						\\ \hline
+\end{tabular}
+\caption{Wahrheitstabelle}
+\label{figure-digitaltechnik-aufgabe2-ttt}
+\end{minipage}
+\end{figure}
+
+Das Schaltnetz für die Boolesche Formel $A_1 = \neg (E_1 \wedge E_2)$ kommt sehr häufig vor. Deshalb kann man das Schaltnetz direkt als eigenes Logikgatter kaufen. Es ist unter dem Namen \textbf{\texttt{NAND}} (von engl. \textbf{n}ot \textbf{and}) bekannt und ist in \autoref{figure-circuit-nand} dargestellt.
+
+\begin{figure}[htb]
+\centering
+\begin{circuitikz}
+\draw (0,0) node[and port] (myand) {}
+(myand.in 1) node[anchor=east] {$E_1$} 
+(myand.in 2) node[anchor=east] {$E_2$}
+(myand.out) node[anchor=west] {$A_1$};
+\node at (myand.bout) [ocirc, right]{};
+\end{circuitikz}
+\caption{Das \texttt{NAND}-Gate besteht aus einem \texttt{AND}-Gate mit einem Kreis hinter dem Baustein. Der Kreis entspricht dem \texttt{NOT}-Gate.}
+\label{figure-circuit-nand}
+\end{figure}
+
+\newpage
+
+\item $A_1 = \neg (E_1 \vee E_2) \Rightarrow A_1 = (\neg (E_1 \vee E_2))$
+
+\begin{figure}[htb]
+\centering
+\begin{minipage}{0.45\textwidth}
+\centering
+\begin{circuitikz}
+\draw node[or port] (A) {} 
+(A.in 1) node[anchor=east] {$E_1$}
+(A.in 2) node[anchor=east] {$E_2$}
+(A.out) node[buffer port, anchor=west] (B) {}
+(B.in 1) node[anchor=east] {}; 
+\node at (B.bout) [ocirc, right]{};
+\draw (B.out) node[anchor=west] {$A_1$};
+\end{circuitikz}
+\caption{Schaltnetz}
+\label{figure-digitaltechnik-aufgabe3-schaltnetz}
+\end{minipage}
+\hfill
+\begin{minipage}{0.45\textwidth}
+\centering
+\begin{tabular}{|c|c||c|}
+\hline
+$E_1$ 	& 	$E_2$ 	& 	$A_1 = (\neg (E_1 \vee E_2))$ 	\\ \hline
+$0$		&  	$0$     	& 	$1$    					\\ \hline
+$0$		& 	$1$     	& 	$0$   					\\ \hline
+$1$ 		& 	$0$      	& 	$0$   					\\ \hline
+$1$		& 	$1$     	& 	$0$     					\\ \hline
+\end{tabular}
+\caption{Wahrheitstabelle}
+\label{figure-digitaltechnik-aufgabe3-ttt}
+\end{minipage}
+\end{figure}
+
+Das Schaltnetz für $A_1$ kommt häufig vor. Deshalb kann man es als Logikgatter kaufen. Es ist unter dem Namen \textbf{\texttt{NOR}} (von engl. \textbf{n}ot \textbf{or}) bekannt und ist in \autoref{figure-circuit-nor} dargestellt.
+
+\begin{figure}[htb]
+\centering
+\begin{circuitikz}
+\draw (0,0) node[or port] (myor) {}
+(myor.in 1) node[anchor=east] {$E_1$} 
+(myor.in 2) node[anchor=east] {$E_2$}
+(myor.out) node[anchor=west] {$A_1$};
+\node at (myor.bout) [ocirc, right]{};
+\end{circuitikz}
+\caption{Das \texttt{NOR}-Gate besteht aus einem \texttt{OR}-Gate mit einem Kreis hinter dem Baustein.}
+\label{figure-circuit-nor}
+\end{figure}
+
+\item $A_1 = E_1 \wedge \neg E_2 \vee \neg E_1 \wedge E_2 \Rightarrow A_1 = ((E_1 \wedge (\neg E_2)) \vee ((\neg E_1) \wedge E_2))$
+
+\begin{figure}[htb]
+\centering
+\begin{minipage}{0.45\textwidth}
+\centering
+\begin{circuitikz}
+\draw (-2, 1) node[and port] (A) {};
+\draw (-2, -1) node[and port] (B) {}; 
+\draw (0,0) node[or port] (C) {}; 
+\draw (A.out) |- (C.in 1);
+\draw (B.out) |- (C.in 2);
+\draw (C.out) node[anchor=west] {$A_1$};
+\draw (-4,-0.5) node[buffer port] (D) {};
+\node at (D.bout) [ocirc, right]{};
+\draw (-4,0.5) node[buffer port] (E) {};
+\node at (E.bout) [ocirc, right]{};
+\draw (D.out) |- (B.in 1);
+\draw (E.out) |- (A.in 2);
+\draw (-7, 0.5) node (E1) {$E_1$};
+\draw (E1) (-6.25,  0.5) node[circle,fill,inner sep=1pt] (E1cross) {} |- (D.in 1);
+\draw (E1) to (-6.25, 0.5) |- (A.in 1);
+\draw (-7, -0.75) node (E2) {$E_2$};
+\draw (E2) (-6,  -0.75) node[circle,fill,inner sep=1pt] (E2cross) {} |- (E.in 1);
+\draw (E2) to (-6, -0.75) |- (B.in 2);
+\end{circuitikz}
+\caption{Schaltnetz}
+\label{figure-digitaltechnik-aufgabe4-schaltnetz}
+\end{minipage}
+\hfill
+\begin{minipage}{0.45\textwidth}
+\centering
+\begin{tabular}{|c|c||c|}
+\hline
+$E_1$ 	& 	$E_2$ 	& 	$A_1 = ((E_1 \wedge (\neg E_2)) \vee ((\neg E_1) \wedge E_2))$ 	\\ \hline
+$0$		&  	$0$     	& 	$0$    												\\ \hline
+$0$		& 	$1$     	& 	$1$   												\\ \hline
+$1$ 		& 	$0$      	& 	$1$   												\\ \hline
+$1$		& 	$1$     	& 	$0$     												\\ \hline
+\end{tabular}
+\caption{Wahrheitstabelle}
+\label{figure-digitaltechnik-aufgabe4-ttt}
+\end{minipage}
+\end{figure}
+
+Das Schaltnetz für $A_1$ kommt häufig vor. Es ist unter dem Namen \textbf{Antivalenz} oder \textbf{\texttt{XOR}} (engl. e\textbf{x}clusive \textbf{or}) bekannt und ist in \autoref{figure-circuit-xor} dargestellt.
+
+\begin{figure}[H]
+\centering
+\begin{circuitikz}
+\draw (0,0) node[xor port] (myxor) {}
+(myxor.in 1) node[anchor=east] {$E_1$} 
+(myxor.in 2) node[anchor=east] {$E_2$}
+(myxor.out) node[anchor=west] {$A_1$};
+\end{circuitikz}
+	\caption{Das \texttt{XOR}-Gate besteht aus einem Gleichheitszeichen mit einer 1 im Rechteck.}
+\label{figure-circuit-xor}	
+\end{figure}
+
+\item $A_1 = E_1 \wedge E_2 \vee \neg E_1 \wedge \neg E_2 \Rightarrow A_1 = ((E_1 \wedge E_2) \vee ((\neg E_1) \wedge (\neg E_2)))$
+
+\begin{figure}[H]
+\centering
+\begin{minipage}{0.45\textwidth}
+\centering
+\begin{circuitikz}
+\draw (-2, 1) node[and port] (A) {};
+\draw (-2, -1) node[and port] (B) {}; 
+\draw (0,0) node[or port] (C) {}; 
+\draw (A.out) |- (C.in 1);
+\draw (B.out) |- (C.in 2);
+\draw (C.out) node[anchor=west] {$A_1$};
+\draw (-4,-0.5) node[buffer port] (D) {};
+\node at (D.bout) [ocirc, right]{};
+\draw (-4,-1.5) node[buffer port] (E) {};
+\node at (E.bout) [ocirc, right]{};
+\draw (D.out) |- (B.in 1);
+\draw (E.out) |- (B.in 2);
+\draw (-7, 0.5) node (E1) {$E_1$};
+\draw (E1) (-6.25,  0.5) node[circle,fill,inner sep=1pt] (E1cross) {} |- (D.in 1);
+\draw (E1) to (-6.25, 0.5) |- (A.in 1);
+\draw (-7, -0.75) node (E2) {$E_2$};
+\draw (E2) (-6,  -0.75) node[circle,fill,inner sep=1pt] (E2cross) {} |- (E.in 1);
+\draw (E2) to (-6, -0.75) |- (A.in 2);
+\end{circuitikz}
+\caption{Schaltnetz}
+\label{figure-digitaltechnik-aufgabe5-schaltnetz}
+\end{minipage}
+\hfill
+\begin{minipage}{0.45\textwidth}
+\centering
+\begin{tabular}{|c|c||c|}
+\hline
+$E_1$ 	& 	$E_2$ 	& 	$A_1 = ((E_1 \wedge E_2) \vee ((\neg E_1) \wedge (\neg E_2)))$ 	\\ \hline
+$0$		&  	$0$     	& 	$1$    												\\ \hline
+$0$		& 	$1$     	& 	$0$   												\\ \hline
+$1$ 		& 	$0$      	& 	$0$   												\\ \hline
+$1$		& 	$1$     	& 	$1$     												\\ \hline
+\end{tabular}
+\caption{Wahrheitstabelle}
+\label{figure-digitaltechnik-aufgabe5-ttt}
+\end{minipage}
+\end{figure}
+
+Das Schaltnetz für die Boolesche Formel $A_1 = ((E_1 \wedge E_2) \vee ((\neg E_1) \wedge (\neg E_2)))$ kommt sehr häufig vor. Deshalb kann man das Schaltnetz direkt als eigenes Logikgatter kaufen. Es ist unter dem Namen \textit{Äquivalenz} oder \textbf{\texttt{XNOR}} (von engl. e\textbf{x}clusive \textbf{n}ot \textbf{or}) bekannt und ist in \autoref{figure-circuit-xnor} dargestellt. Nur wenn beide Eingänge identische Werte besitzen (beide $0$ oder beide $1$), ist der Ausgang $1$\footnote{Deshalb nennt man das Logikgatter auch Äquivalenz. Beide Eingänge müssen gleichwertig (äquivalent) sein.}.
+
+\begin{figure}[htb]
+\centering
+\begin{circuitikz}
+\draw (0,0) node[xor port] (myxor) {}
+(myxor.in 1) node[anchor=east] {$E_1$} 
+(myxor.in 2) node[anchor=east] {$E_2$}
+(myxor.out) node[anchor=west] {$A_1$};
+\node at (myxor.bout) [ocirc, right]{};
+\end{circuitikz}
+\caption{Die grafische Darstellung des \texttt{XNOR}-Gates besteht aus einem \texttt{XOR}-Gate mit einem Kreis hinter dem Baustein.}
+\label{figure-circuit-xnor}
+\end{figure}
+
+\end{enumerate}

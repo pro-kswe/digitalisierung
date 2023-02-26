@@ -1,0 +1,91 @@
+\section{\autoref{chapter-codierungen}, \nameref{chapter-codierungen}}
+
+\subsection*{Aufgaben 1}
+
+\begin{enumerate}
+\item \autoref{table-shortest-words} zeigt alle 39 Wörter.
+
+\begin{table}[htb]
+\centering
+\begin{tabular}{|l|l|l|l|l|l|l|l|}
+\hline
+a   & b   & c   & aa  & ab  & ba  & bb  & ac  \\ \hline
+ca  & bc  & cb  & cc  & aaa & aab & aba & abb \\ \hline
+baa & bab & bba & bbb & aac & aca & acc & caa \\ \hline
+cac & cca & ccc & bbc & bcb & bcc & cbb & cbc \\ \hline
+ccb & abc & acb & bac & cab & bca & cba &     \\ \hline
+\end{tabular}
+\caption{Die Wörter der Länge $1$, $2$ und $3$ müssen aufgezählt werden.}
+\label{table-shortest-words}
+\end{table}
+
+\item Das Wort $abba$ ist aus $\mathscr{A}_{abc}^*$. Das Wort $abbdca$ ist nicht aus $\mathscr{A}_{abc}^*$, da $d$ nicht in $\mathscr{A}_{abc}$ vorkommt.
+\item Nein, da \say{e} und \say{n} nicht in $\mathscr{A}_{Lat} = \{A, B, C, D, \dots , X, Y, Z\}$ vorkommen und somit kann Ben nicht aus $\mathscr{A}_{Lat}^*$ sein, da das Wort nicht in dieser Menge ist.
+\item Das Wort $abbaab$ kommt in $\mathscr{A}_{abc}^6$ vor. Darin sind alle Wörter der Länge 6 enthalten die aus den Zeichen $a$ und $b$ bestehen. Das Wort $abbdca$ ist nicht aus $\mathscr{A}_{abc}^*$ und kann somit auch nicht aus $\mathscr{A}_{abc}^6$ sein.
+\item Es sind die Wörter aus $\mathscr{A}_{abc}^2$ gesucht. Dies bedeutet alle Wörter der Länge $2$. \autoref{table-shortest-words} zeigt diese Wörter bereits in den ersten beiden Zeilen (von aa bis cc).
+\end{enumerate}
+
+\subsection*{Aufgaben 2}
+
+\begin{enumerate}
+\item INFORMATIK
+\item $\cdot~-~-~\cdot/~\cdot~/~-~/~\cdot~/~\cdot~-~\cdot$ (PETER)
+\end{enumerate}
+
+\subsection*{Aufgaben 3}
+
+\begin{enumerate}
+\item Nein, der Morsecode ist kein Blockcode. Die Code-Wörter sind unterschiedlich lang.
+\item Jedes Code-Wort kommt nur einmal vor. Man muss das komplette Code-Wort lesen damit korrekt decodiert wird.
+\item Zwischen zwei Code-Wörtern wird eine Pause eingefügt (3. Zeichen im Morsealphabet $/$).
+\item \autoref{table-arrows} zeigt den Code.
+\end{enumerate}
+
+\begin{table}[htb]
+\centering
+\begin{tabular}{|l|l|}
+\hline
+Zeichen & Code-Wort \\ \hline
+  \faAngleDoubleDown      & 000       \\ \hline
+  \faAngleDoubleLeft      & 001       \\ \hline
+  \faAngleDoubleRight     & 010       \\ \hline
+  \faAngleDoubleUp      & 011       \\ \hline
+  \faAngleDown      & 100       \\ \hline
+  \faAngleLeft      & 101       \\ \hline
+  \faAngleRight      & 110       \\ \hline
+  \faAngleUp      & 111      \\ \hline
+\end{tabular}
+\caption{Eine andere Zuordnung der Code-Wörter ist auch möglich.}
+\label{table-arrows}
+\end{table}
+
+\subsection*{Aufgaben 4}
+
+\begin{enumerate}
+\item $65\,536$ ergibt $01100101010100110110$. Jede Ziffer wird gemäss der Tabelle codiert. Es braucht pro Ziffer somit $4$ Bits. Total benötigt man für die Zahl $65\,536$ insgesamt $20$ Bits. Mit dem Dualcode würde man die Zahl $65\,536$ als $10000000000000000_2$ darstellen. Man braucht somit $17$ Bits.
+\item Man muss die Ziffern in $4$-er Gruppen aufteilen und dann in der Code-Tabelle nachschauen. Man erhält die Zahl $2\,001$.
+\end{enumerate}
+
+\subsection*{Aufgaben 5}
+
+\begin{enumerate}
+\item $65\,536$ ergibt $00010000000000100000000010000000000010000000100000$. Jede Ziffer wird gemäss der Tabelle codiert. Es braucht pro Ziffer somit $10$ Bits. Total benötigt man für die Zahl $65\,536$ insgesamt $50$ Bits. Mit dem Dualcode würde man die Zahl $65\,536$ als $10000000000000000_2$ darstellen. Man braucht somit $17$ Bits.
+\item Man muss die Ziffern in $10$-er Gruppen aufteilen und dann in der Code-Tabelle nachschauen. Man erhält die Zahl $2001$.
+\item Bei $10$ Bits gibt es $2^{10}$ Code-Wörter. Es werden \say{nur} 10 Code-Wörter benutzt. Somit bleiben $2^{10} - 10 = 1\,024 - 10 = 1\,014$ Code-Wörter übrig und sind somit nicht erlaubt.
+\end{enumerate}
+
+\subsection*{Aufgaben 6}
+
+\begin{enumerate}
+\item MENSA ergibt mit der Code-Tabelle 0110000100011011001000000.
+\item ABBA
+\end{enumerate}
+
+\subsection*{Aufgaben 7}
+
+\begin{enumerate}
+\item pro@kswe.ch ergibt 11100001110010110111110000001101011111\\
+001111101111100101010111011000111101000
+\item 2001: A Space Odyssey
+\item Das Code-Wort wird zusammengefügt aus den Bitpositionen. Für das A ergibt sich 1000001. Man kombiniert Zeile und Spalte und fügt die Bits zusammen. Von links nach rechts werden die Bitpositionen wie folgt notiert: 7, 6, 5, 4, 3, 2, 1
+\end{enumerate}
